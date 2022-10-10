@@ -1,0 +1,15 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity halfAdder is
+	port(A,B: in std_logic
+			sum, carryout: out std_logic);
+end halfAdder;
+
+architecture structhalfAdder of halfAdder is
+	signal sum: std_logic;
+	signal carryout: std_logic;
+	
+	sum <= A and B;
+	carryout <= A XOR B;
+end structhalfAdder;

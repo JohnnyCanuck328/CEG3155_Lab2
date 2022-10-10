@@ -1,0 +1,20 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity twoAnd is
+	port(A,B: in std_logic;
+			output: out std_logic);
+end twoAnd;
+
+architecture behavAnd2 of twoAnd is
+	begin process(A,B)
+	
+	begin
+	if (A = '1' and B = '1') then
+		output <= '1';
+	else
+		output <= '0';
+		
+	end if;
+	end process;
+end behavAnd2;
