@@ -3,7 +3,7 @@ $comment
 		vcd file Lab2.msim.vcd -direction
 $end
 $date
-	Mon Oct 10 10:55:03 2022
+	Tue Oct 25 13:38:05 2022
 $end
 $version
 	ModelSim Version 10.1d
@@ -11,17 +11,17 @@ $end
 $timescale
 	1ps
 $end
-$scope module fourBitMulti_vlg_vec_tst $end
-$var reg 4 ! multiplicand [3:0] $end
-$var reg 4 " multiplier [3:0] $end
-$var wire 1 # product [7] $end
-$var wire 1 $ product [6] $end
-$var wire 1 % product [5] $end
-$var wire 1 & product [4] $end
-$var wire 1 ' product [3] $end
-$var wire 1 ( product [2] $end
-$var wire 1 ) product [1] $end
-$var wire 1 * product [0] $end
+$scope module divider4bit_vlg_vec_tst $end
+$var reg 4 ! dividend [3:0] $end
+$var reg 4 " divisor [3:0] $end
+$var wire 1 # quotient [3] $end
+$var wire 1 $ quotient [2] $end
+$var wire 1 % quotient [1] $end
+$var wire 1 & quotient [0] $end
+$var wire 1 ' remainder [3] $end
+$var wire 1 ( remainder [2] $end
+$var wire 1 ) remainder [1] $end
+$var wire 1 * remainder [0] $end
 $var wire 1 + sampler $end
 $scope module i1 $end
 $var wire 1 , gnd $end
@@ -31,62 +31,64 @@ $var tri1 1 / devclrn $end
 $var tri1 1 0 devpor $end
 $var tri1 1 1 devoe $end
 $var wire 1 2 ~QUARTUS_CREATED_GND~I_combout $end
-$var wire 1 3 multiplicand[0]~input_o $end
-$var wire 1 4 multiplier[0]~input_o $end
-$var wire 1 5 product~0_combout $end
-$var wire 1 6 multiplicand[1]~input_o $end
-$var wire 1 7 multiplier[1]~input_o $end
-$var wire 1 8 hA0|sum~combout $end
-$var wire 1 9 multiplier[2]~input_o $end
-$var wire 1 : multiplicand[2]~input_o $end
-$var wire 1 ; hA1|sum~combout $end
-$var wire 1 < multiplicand[3]~input_o $end
-$var wire 1 = multiplier[3]~input_o $end
-$var wire 1 > fA1|o_Sum~combout $end
-$var wire 1 ? fA3|int_CarryOut1~combout $end
-$var wire 1 @ hA2|sum~combout $end
-$var wire 1 A nandOut~0_combout $end
-$var wire 1 B hA2|carryout~combout $end
-$var wire 1 C fA3|int_CarryOut3~0_combout $end
-$var wire 1 D fA2|int_CarryOut1~combout $end
-$var wire 1 E fA4|o_Sum~combout $end
-$var wire 1 F fA6|o_Sum~combout $end
-$var wire 1 G nandOut~2_combout $end
-$var wire 1 H nandOut~1_combout $end
-$var wire 1 I fA2|o_CarryOut~0_combout $end
-$var wire 1 J fA5|int_CarryOut1~combout $end
-$var wire 1 K fA7|o_Sum~combout $end
-$var wire 1 L fA5|o_Sum~combout $end
-$var wire 1 M fA4|o_CarryOut~combout $end
-$var wire 1 N fA5|o_CarryOut~combout $end
-$var wire 1 O fA6|o_CarryOut~combout $end
-$var wire 1 P fA8|o_Sum~combout $end
-$var wire 1 Q fA8|o_CarryOut~combout $end
-$var wire 1 R andOut [9] $end
-$var wire 1 S andOut [8] $end
-$var wire 1 T andOut [7] $end
-$var wire 1 U andOut [6] $end
-$var wire 1 V andOut [5] $end
-$var wire 1 W andOut [4] $end
-$var wire 1 X andOut [3] $end
-$var wire 1 Y andOut [2] $end
-$var wire 1 Z andOut [1] $end
-$var wire 1 [ andOut [0] $end
+$var wire 1 3 dividend[3]~input_o $end
+$var wire 1 4 dividend[1]~input_o $end
+$var wire 1 5 dividend[2]~input_o $end
+$var wire 1 6 dividend[0]~input_o $end
+$var wire 1 7 input1|mux|y[2]~0_combout $end
+$var wire 1 8 divisor[3]~input_o $end
+$var wire 1 9 divisor[2]~input_o $end
+$var wire 1 : divisor[0]~input_o $end
+$var wire 1 ; FS1|Bout~0_combout $end
+$var wire 1 < divisor[1]~input_o $end
+$var wire 1 = ORout[1]~1_combout $end
+$var wire 1 > input2|mux|y[1]~2_combout $end
+$var wire 1 ? ORout[1]~2_combout $end
+$var wire 1 @ ORout[0]~0_combout $end
+$var wire 1 A FS0|D~0_combout $end
+$var wire 1 B input1|mux|y[1]~1_combout $end
+$var wire 1 C FS3|D~0_combout $end
+$var wire 1 D input2|mux|y~1_combout $end
+$var wire 1 E input2|mux|y[2]~0_combout $end
+$var wire 1 F FS1|D~0_combout $end
+$var wire 1 G FS3|Bout~0_combout $end
+$var wire 1 H FS4|D~0_combout $end
+$var wire 1 I FS6|Bout~0_combout $end
+$var wire 1 J FS6|Bout~1_combout $end
+$var wire 1 K FS6|Bout~2_combout $end
+$var wire 1 L FS8|Bout~0_combout $end
+$var wire 1 M ANDout[5]~0_combout $end
+$var wire 1 N ANDout[5]~1_combout $end
+$var wire 1 O ANDout[4]~2_combout $end
+$var wire 1 P resultMux|y[1]~0_combout $end
+$var wire 1 Q resultMux|y[2]~1_combout $end
+$var wire 1 R resultMux|y~2_combout $end
+$var wire 1 S FS5|D~0_combout $end
+$var wire 1 T FS2|D~0_combout $end
+$var wire 1 U FS6|D~0_combout $end
+$var wire 1 V FS7|D~0_combout $end
+$var wire 1 W FS8|D~0_combout $end
+$var wire 1 X ANDout [5] $end
+$var wire 1 Y ANDout [4] $end
+$var wire 1 Z ANDout [3] $end
+$var wire 1 [ ANDout [2] $end
+$var wire 1 \ ANDout [1] $end
+$var wire 1 ] ANDout [0] $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
-b1 !
-b1 "
-1*
+b111 !
+b111 "
+1&
+0%
+0$
+0#
+0*
 0)
 0(
 0'
-0&
-0%
-0$
-1#
 x+
 0,
 1-
@@ -95,222 +97,255 @@ x.
 10
 11
 02
-13
+03
 14
 15
-06
-07
+16
+17
 08
-09
-0:
+19
+1:
 0;
-0<
+1<
 0=
-0>
-0?
+1>
+1?
 0@
-0A
+1A
 1B
-0C
+1C
 0D
-0E
+1E
 0F
 0G
 0H
 0I
-1J
+0J
 0K
 1L
-1M
+0M
 1N
-1O
+0O
 0P
-1Q
+0Q
+0R
+0S
+1T
+0U
+0V
+0W
+z]
+z\
 z[
-zZ
+0Z
 zY
 zX
-zW
-zV
-zU
-zT
-0S
-zR
 $end
-#60000
-b0 !
-03
-0+
-05
-0*
-#140000
-b11 "
-17
-1+
-#150000
-b1 !
-13
-0+
-15
-18
-1*
-1)
-#220000
-b11 !
-b1 "
-07
-16
-1+
-#280000
-b111 !
-b11 "
-17
-1:
-0+
-1>
-1?
-1D
-08
-1;
-1E
-0)
-1(
-1F
-1&
-#320000
-b111 "
-b110 !
-03
-19
-1+
-0?
-1C
-1S
-05
-18
-0;
-0B
-0J
-0M
-0*
-1)
-0(
-1@
-0L
-1'
-0F
-1K
-0&
-1%
-#370000
-b1110 !
-b110 "
-b10 "
+#50000
 b1111 !
-04
-09
+b1111 "
+18
 13
-1<
 0+
 0>
-1?
-0C
-0D
-0S
-1A
-1;
-1J
-1M
-0O
-1(
-1F
-0K
-1L
-1&
-0%
-1K
-1%
-1P
-0Q
-1$
-0#
-#410000
-b0 "
-b100 "
-07
-19
-1+
-1>
 0?
-0A
-1D
-1S
-1G
-08
+1@
 0E
-0J
-0M
+1J
 1O
-0)
-0F
-0O
-0L
-0&
-1F
-1&
-#460000
-b111 !
-b101 "
-b111 "
-14
-17
-0<
-0+
-0>
-1C
-0G
-15
-0;
-0P
+1Z
+07
+0B
+0A
+0C
+1G
+0Z
+1U
+1V
+1P
 1Q
-1B
-1E
-1*
+0O
+0T
+1)
+1(
+1%
+1$
+0V
+0Q
 0(
 0$
-1#
-0@
-0K
-1O
-0'
+0P
+0U
 0%
-1K
-1%
-#500000
-b101 !
-b1 !
-b0 !
-b11 "
+0)
+#110000
+b1011 !
+b1011 "
+b1010 "
+b11 !
 b10 "
-b0 "
-04
-07
-09
-03
-06
 0:
-1+
-0C
-0D
-0S
+09
+08
 05
-0E
-1J
-1M
-0*
-1L
-0F
-0K
-0&
+03
+1+
+1>
+0G
+0J
+1B
+1S
+1G
+1O
+1T
+1*
+1U
+0O
+1)
+1P
+0U
+1%
+0)
+0P
 0%
+#160000
+b1 !
+b101 !
+b1101 !
+04
+15
+13
+0+
+1P
+1Q
+1R
+1%
+1$
+1#
+#210000
+b110 "
+b1110 "
+b1111 !
+b1011 !
+b11 !
+14
+05
+03
+19
+18
+1+
+#260000
+b1111 "
+b1011 "
+b11 "
+b111 !
+15
+1:
+09
+08
+0+
+17
+0S
+0P
+0Q
+0R
+1A
+0G
+0*
+0%
+0$
+0#
+1K
+1O
+0T
+0L
+1P
+1U
+1%
+1)
+0N
+1S
+0U
+0&
+1*
+0)
+#310000
+b110 !
+b1 "
+b1110 !
+b1010 !
+0<
+06
+05
+13
+1+
+0>
+1Z
+0S
+1Q
+1R
+0A
+1C
+0*
+1$
+1#
+0Q
+0C
+1L
+0$
+0L
+1N
+0P
+1S
+1U
+1&
+0%
+1*
+1)
+0N
+1P
+0S
+0U
+0&
+1%
+0*
+0)
+#360000
+b1000 !
+b0 "
+b0 !
+0:
+04
+03
+0+
+1A
+1J
+0K
+1M
+0O
+0Z
+1T
+07
+0B
+1Q
+0R
+1C
+1L
+0A
+0T
+1$
+0#
+0P
+0Q
+1U
+0C
+0%
+0$
+1)
+1V
+0U
+1(
+0)
+0V
+0(
 #1000000

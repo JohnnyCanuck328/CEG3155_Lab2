@@ -1,0 +1,24 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity fullSubtractor is
+	port(A,B,Bin : in std_logic;
+			result, Bout: out std_logic)
+end fullSubtractor;
+
+architecture fullSub of fullSubtractor is
+	signal xorOut1, xorOut2: std_logic;
+	signal NOTxor, NOTb: std_logic;
+	signal andOut1, andOut2: std_logic;
+	signal andOrAnd: std_logic;
+	
+	begin
+		
+		xorOut1 <= B xor Bin;
+		xorOut2 <= A xor xorOut1;
+		NOTb <= NOT(B);
+		andOut1 <= NOTb and Bin;
+		andOut2 <= A and xorOut1;
+		D <= xorOut1;
+		Bout <= andOut2 or andOut2;
+end fullSub;

@@ -1,0 +1,17 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity divider is 
+	port(A: std_logic_vector(3 downto 0);
+			B: std_logic_vector(3 downto 0);
+			Q: std_logic_vector(7 downto 0));
+end divider;
+
+architecture structDiv of 
+	
+	component h2InMux
+	
+	end component;
+	
+	component 
+end structDiv;

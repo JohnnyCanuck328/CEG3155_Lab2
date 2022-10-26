@@ -106,5 +106,6 @@ architecture structfourMulti of fourBitMulti is
 	
 	--Error occures with these two, could be because of error above in design
 	fA8: onebitadder port map(i_CarryIn => carryValue(10), i_Ai => andOut(9), i_Bi => carryValue(7), o_Sum => product(6), o_CarryOut => carryValue(11));
+	--product(7) <= carryValue(11) AND '1';
 	hA3: halfAdder port map(A => carryValue(11), B => '1', sum => product(7), carryout => open);
 end structfourMulti;

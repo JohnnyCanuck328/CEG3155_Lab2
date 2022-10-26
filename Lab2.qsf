@@ -38,7 +38,7 @@
 
 set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CGXFC7C6U19I7
-set_global_assignment -name TOP_LEVEL_ENTITY fourBitMulti
+set_global_assignment -name TOP_LEVEL_ENTITY divider4bit
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 13.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "07:42:01  OCTOBER 03, 2022"
 set_global_assignment -name LAST_QUARTUS_VERSION 13.1
@@ -54,24 +54,38 @@ set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -entity e
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -entity eightBitAddSub -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -entity eightBitAddSub -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -entity eightBitAddSub -section_id Top
-set_global_assignment -name EDA_NETLIST_WRITER_OUTPUT_DIR "C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/VHDL/lab2/simulation/qsim/" -section_id eda_simulation
+set_global_assignment -name EDA_NETLIST_WRITER_OUTPUT_DIR "C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/simulation/qsim/" -section_id eda_simulation
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST ON -section_id eda_simulation
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -entity eightbitaddsub -section_id Top
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -entity eightbitaddsub -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -entity eightbitaddsub -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -entity eightbitaddsub -section_id Top
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name VHDL_FILE divider4bit.vhd
+set_global_assignment -name VHDL_FILE fullSubtractor.vhd
+set_global_assignment -name VHDL_FILE multiplier4bit.vhd
+set_global_assignment -name VHDL_FILE fourbitaddsub.vhd
+set_global_assignment -name VHDL_FILE eightBitLeftShift.vhd
+set_global_assignment -name VHDL_FILE dFF_2.vhd
 set_global_assignment -name VHDL_FILE h2InMux.vhd
 set_global_assignment -name VHDL_FILE fourMux.vhd
 set_global_assignment -name VHDL_FILE twoAnd.vhd
-set_global_assignment -name VHDL_FILE eightbitaddsub.vhd
 set_global_assignment -name VHDL_FILE onebitadder.vhd
 set_global_assignment -name VECTOR_WAVEFORM_FILE testingAddSub.vwf
-set_global_assignment -name VECTOR_WAVEFORM_FILE testingAnd2.vwf
 set_global_assignment -name VHDL_FILE halfAdder.vhd
-set_global_assignment -name VECTOR_WAVEFORM_FILE testingHalf.vwf
 set_global_assignment -name VHDL_FILE fourBitMulti.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE testingMux.vwf
+set_global_assignment -name VHDL_FILE comparator.vhd
+set_global_assignment -name VHDL_FILE h2InMux4bit.vhd
+set_global_assignment -name VHDL_FILE twoComp.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE testingComp.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE testingMulti.vwf
+set_global_assignment -name VHDL_FILE eightBitAdder.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE testing8bitAdd.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE testing8bitComp.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE testingMultiOld.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE testingSub.vwf
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name VECTOR_WAVEFORM_FILE testingDiv.vwf
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
