@@ -1,0 +1,1279 @@
+|datapath
+num0[0] => divider4bit:myDiv.dividend[0]
+num0[0] => multiplier4bit:myMulti.multiplier[0]
+num0[0] => fourbitaddsub:addSub.i_Ai[0]
+num0[1] => divider4bit:myDiv.dividend[1]
+num0[1] => multiplier4bit:myMulti.multiplier[1]
+num0[1] => fourbitaddsub:addSub.i_Ai[1]
+num0[2] => divider4bit:myDiv.dividend[2]
+num0[2] => multiplier4bit:myMulti.multiplier[2]
+num0[2] => fourbitaddsub:addSub.i_Ai[2]
+num0[3] => divider4bit:myDiv.dividend[3]
+num0[3] => multiplier4bit:myMulti.multiplier[3]
+num0[3] => fourbitaddsub:addSub.i_Ai[3]
+num1[0] => divider4bit:myDiv.divisor[0]
+num1[0] => multiplier4bit:myMulti.multiplicand[0]
+num1[0] => fourbitaddsub:addSub.i_Bi[0]
+num1[1] => divider4bit:myDiv.divisor[1]
+num1[1] => multiplier4bit:myMulti.multiplicand[1]
+num1[1] => fourbitaddsub:addSub.i_Bi[1]
+num1[2] => divider4bit:myDiv.divisor[2]
+num1[2] => multiplier4bit:myMulti.multiplicand[2]
+num1[2] => fourbitaddsub:addSub.i_Bi[2]
+num1[3] => divider4bit:myDiv.divisor[3]
+num1[3] => multiplier4bit:myMulti.multiplicand[3]
+num1[3] => fourbitaddsub:addSub.i_Bi[3]
+sel0 => fourbitaddsub:addSub.controller
+sel0 => fourMux:outputMux.s0
+sel1 => fourMux:outputMux.s1
+result[0] <= fourMux:outputMux.uy[0]
+result[1] <= fourMux:outputMux.uy[1]
+result[2] <= fourMux:outputMux.uy[2]
+result[3] <= fourMux:outputMux.uy[3]
+result[4] <= fourMux:outputMux.uy[4]
+result[5] <= fourMux:outputMux.uy[5]
+result[6] <= fourMux:outputMux.uy[6]
+result[7] <= fourMux:outputMux.uy[7]
+
+
+|datapath|divider4bit:myDiv
+dividend[0] => twoComp:input1.A[0]
+dividend[1] => twoComp:input1.A[1]
+dividend[2] => twoComp:input1.A[2]
+dividend[3] => twoComp:input1.A[3]
+dividend[3] => twoComp:input1.enable
+divisor[0] => twoComp:input2.A[0]
+divisor[1] => twoComp:input2.A[1]
+divisor[2] => twoComp:input2.A[2]
+divisor[3] => twoComp:input2.A[3]
+divisor[3] => twoComp:input2.enable
+quotient[0] <= h2InMux4bit:resultMux.y[0]
+quotient[1] <= h2InMux4bit:resultMux.y[1]
+quotient[2] <= h2InMux4bit:resultMux.y[2]
+quotient[3] <= h2InMux4bit:resultMux.y[3]
+remainder[0] <= fullSubtractor:FS5.D
+remainder[1] <= fullSubtractor:FS6.D
+remainder[2] <= fullSubtractor:FS7.D
+remainder[3] <= fullSubtractor:FS8.D
+
+
+|datapath|divider4bit:myDiv|twoComp:input1
+A[0] => h2InMux4bit:mux.w0[0]
+A[0] => fourbitaddsub:fourBitAdder.i_Ai[0]
+A[1] => h2InMux4bit:mux.w0[1]
+A[1] => fourbitaddsub:fourBitAdder.i_Ai[1]
+A[2] => h2InMux4bit:mux.w0[2]
+A[2] => fourbitaddsub:fourBitAdder.i_Ai[2]
+A[3] => h2InMux4bit:mux.w0[3]
+A[3] => fourbitaddsub:fourBitAdder.i_Ai[3]
+enable => h2InMux4bit:mux.en
+enable => isConverted.DATAIN
+isConverted <= enable.DB_MAX_OUTPUT_PORT_TYPE
+AC[0] <= h2InMux4bit:mux.y[0]
+AC[1] <= h2InMux4bit:mux.y[1]
+AC[2] <= h2InMux4bit:mux.y[2]
+AC[3] <= h2InMux4bit:mux.y[3]
+
+
+|datapath|divider4bit:myDiv|twoComp:input1|fourbitaddsub:fourBitAdder
+i_Ai[0] => oneBitAdder:bit0.i_Ai
+i_Ai[1] => oneBitAdder:bit1.i_Ai
+i_Ai[2] => oneBitAdder:bit2.i_Ai
+i_Ai[3] => oneBitAdder:bit3.i_Ai
+i_Bi[0] => XORout[0].IN0
+i_Bi[1] => XORout[1].IN0
+i_Bi[2] => XORout[2].IN0
+i_Bi[3] => XORout[3].IN0
+carryOut <= oneBitAdder:bit3.o_CarryOut
+controller => XORout[0].IN1
+controller => XORout[1].IN1
+controller => XORout[2].IN1
+controller => XORout[3].IN1
+controller => oneBitAdder:bit0.i_CarryIn
+o_Sum[0] <= oneBitAdder:bit0.o_Sum
+o_Sum[1] <= oneBitAdder:bit1.o_Sum
+o_Sum[2] <= oneBitAdder:bit2.o_Sum
+o_Sum[3] <= oneBitAdder:bit3.o_Sum
+overflow <= overflow.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|twoComp:input1|fourbitaddsub:fourBitAdder|oneBitAdder:bit0
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|twoComp:input1|fourbitaddsub:fourBitAdder|oneBitAdder:bit1
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|twoComp:input1|fourbitaddsub:fourBitAdder|oneBitAdder:bit2
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|twoComp:input1|fourbitaddsub:fourBitAdder|oneBitAdder:bit3
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|twoComp:input1|h2InMux4bit:mux
+w0[0] => y.IN0
+w0[1] => y.IN0
+w0[2] => y.IN0
+w0[3] => y.IN0
+w1[0] => y.IN0
+w1[1] => y.IN0
+w1[2] => y.IN0
+w1[3] => y.IN0
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+y[0] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[1] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[2] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[3] <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|twoComp:input2
+A[0] => h2InMux4bit:mux.w0[0]
+A[0] => fourbitaddsub:fourBitAdder.i_Ai[0]
+A[1] => h2InMux4bit:mux.w0[1]
+A[1] => fourbitaddsub:fourBitAdder.i_Ai[1]
+A[2] => h2InMux4bit:mux.w0[2]
+A[2] => fourbitaddsub:fourBitAdder.i_Ai[2]
+A[3] => h2InMux4bit:mux.w0[3]
+A[3] => fourbitaddsub:fourBitAdder.i_Ai[3]
+enable => h2InMux4bit:mux.en
+enable => isConverted.DATAIN
+isConverted <= enable.DB_MAX_OUTPUT_PORT_TYPE
+AC[0] <= h2InMux4bit:mux.y[0]
+AC[1] <= h2InMux4bit:mux.y[1]
+AC[2] <= h2InMux4bit:mux.y[2]
+AC[3] <= h2InMux4bit:mux.y[3]
+
+
+|datapath|divider4bit:myDiv|twoComp:input2|fourbitaddsub:fourBitAdder
+i_Ai[0] => oneBitAdder:bit0.i_Ai
+i_Ai[1] => oneBitAdder:bit1.i_Ai
+i_Ai[2] => oneBitAdder:bit2.i_Ai
+i_Ai[3] => oneBitAdder:bit3.i_Ai
+i_Bi[0] => XORout[0].IN0
+i_Bi[1] => XORout[1].IN0
+i_Bi[2] => XORout[2].IN0
+i_Bi[3] => XORout[3].IN0
+carryOut <= oneBitAdder:bit3.o_CarryOut
+controller => XORout[0].IN1
+controller => XORout[1].IN1
+controller => XORout[2].IN1
+controller => XORout[3].IN1
+controller => oneBitAdder:bit0.i_CarryIn
+o_Sum[0] <= oneBitAdder:bit0.o_Sum
+o_Sum[1] <= oneBitAdder:bit1.o_Sum
+o_Sum[2] <= oneBitAdder:bit2.o_Sum
+o_Sum[3] <= oneBitAdder:bit3.o_Sum
+overflow <= overflow.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|twoComp:input2|fourbitaddsub:fourBitAdder|oneBitAdder:bit0
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|twoComp:input2|fourbitaddsub:fourBitAdder|oneBitAdder:bit1
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|twoComp:input2|fourbitaddsub:fourBitAdder|oneBitAdder:bit2
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|twoComp:input2|fourbitaddsub:fourBitAdder|oneBitAdder:bit3
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|twoComp:input2|h2InMux4bit:mux
+w0[0] => y.IN0
+w0[1] => y.IN0
+w0[2] => y.IN0
+w0[3] => y.IN0
+w1[0] => y.IN0
+w1[1] => y.IN0
+w1[2] => y.IN0
+w1[3] => y.IN0
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+y[0] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[1] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[2] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[3] <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|fullSubtractor:FS0
+A => inter.IN0
+A => D.IN0
+A => Bout.IN0
+A => Bout.IN0
+B => inter.IN1
+B => Bout.IN1
+B => Bout.IN0
+Bin => inter.IN1
+Bin => Bout.IN1
+Bin => Bout.IN1
+ctrl => D.IN1
+ctrl => D.IN1
+D <= D.DB_MAX_OUTPUT_PORT_TYPE
+Bout <= Bout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|fullSubtractor:FS1
+A => inter.IN0
+A => D.IN0
+A => Bout.IN0
+A => Bout.IN0
+B => inter.IN1
+B => Bout.IN1
+B => Bout.IN0
+Bin => inter.IN1
+Bin => Bout.IN1
+Bin => Bout.IN1
+ctrl => D.IN1
+ctrl => D.IN1
+D <= D.DB_MAX_OUTPUT_PORT_TYPE
+Bout <= Bout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|fullSubtractor:FS2
+A => inter.IN0
+A => D.IN0
+A => Bout.IN0
+A => Bout.IN0
+B => inter.IN1
+B => Bout.IN1
+B => Bout.IN0
+Bin => inter.IN1
+Bin => Bout.IN1
+Bin => Bout.IN1
+ctrl => D.IN1
+ctrl => D.IN1
+D <= D.DB_MAX_OUTPUT_PORT_TYPE
+Bout <= Bout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|fullSubtractor:FS3
+A => inter.IN0
+A => D.IN0
+A => Bout.IN0
+A => Bout.IN0
+B => inter.IN1
+B => Bout.IN1
+B => Bout.IN0
+Bin => inter.IN1
+Bin => Bout.IN1
+Bin => Bout.IN1
+ctrl => D.IN1
+ctrl => D.IN1
+D <= D.DB_MAX_OUTPUT_PORT_TYPE
+Bout <= Bout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|fullSubtractor:FS4
+A => inter.IN0
+A => D.IN0
+A => Bout.IN0
+A => Bout.IN0
+B => inter.IN1
+B => Bout.IN1
+B => Bout.IN0
+Bin => inter.IN1
+Bin => Bout.IN1
+Bin => Bout.IN1
+ctrl => D.IN1
+ctrl => D.IN1
+D <= D.DB_MAX_OUTPUT_PORT_TYPE
+Bout <= Bout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|fullSubtractor:FS5
+A => inter.IN0
+A => D.IN0
+A => Bout.IN0
+A => Bout.IN0
+B => inter.IN1
+B => Bout.IN1
+B => Bout.IN0
+Bin => inter.IN1
+Bin => Bout.IN1
+Bin => Bout.IN1
+ctrl => D.IN1
+ctrl => D.IN1
+D <= D.DB_MAX_OUTPUT_PORT_TYPE
+Bout <= Bout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|fullSubtractor:FS6
+A => inter.IN0
+A => D.IN0
+A => Bout.IN0
+A => Bout.IN0
+B => inter.IN1
+B => Bout.IN1
+B => Bout.IN0
+Bin => inter.IN1
+Bin => Bout.IN1
+Bin => Bout.IN1
+ctrl => D.IN1
+ctrl => D.IN1
+D <= D.DB_MAX_OUTPUT_PORT_TYPE
+Bout <= Bout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|fullSubtractor:FS7
+A => inter.IN0
+A => D.IN0
+A => Bout.IN0
+A => Bout.IN0
+B => inter.IN1
+B => Bout.IN1
+B => Bout.IN0
+Bin => inter.IN1
+Bin => Bout.IN1
+Bin => Bout.IN1
+ctrl => D.IN1
+ctrl => D.IN1
+D <= D.DB_MAX_OUTPUT_PORT_TYPE
+Bout <= Bout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|fullSubtractor:FS8
+A => inter.IN0
+A => D.IN0
+A => Bout.IN0
+A => Bout.IN0
+B => inter.IN1
+B => Bout.IN1
+B => Bout.IN0
+Bin => inter.IN1
+Bin => Bout.IN1
+Bin => Bout.IN1
+ctrl => D.IN1
+ctrl => D.IN1
+D <= D.DB_MAX_OUTPUT_PORT_TYPE
+Bout <= Bout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|fourbitaddsub:fourBitAdder
+i_Ai[0] => oneBitAdder:bit0.i_Ai
+i_Ai[1] => oneBitAdder:bit1.i_Ai
+i_Ai[2] => oneBitAdder:bit2.i_Ai
+i_Ai[3] => oneBitAdder:bit3.i_Ai
+i_Bi[0] => XORout[0].IN0
+i_Bi[1] => XORout[1].IN0
+i_Bi[2] => XORout[2].IN0
+i_Bi[3] => XORout[3].IN0
+carryOut <= oneBitAdder:bit3.o_CarryOut
+controller => XORout[0].IN1
+controller => XORout[1].IN1
+controller => XORout[2].IN1
+controller => XORout[3].IN1
+controller => oneBitAdder:bit0.i_CarryIn
+o_Sum[0] <= oneBitAdder:bit0.o_Sum
+o_Sum[1] <= oneBitAdder:bit1.o_Sum
+o_Sum[2] <= oneBitAdder:bit2.o_Sum
+o_Sum[3] <= oneBitAdder:bit3.o_Sum
+overflow <= overflow.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|fourbitaddsub:fourBitAdder|oneBitAdder:bit0
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|fourbitaddsub:fourBitAdder|oneBitAdder:bit1
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|fourbitaddsub:fourBitAdder|oneBitAdder:bit2
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|fourbitaddsub:fourBitAdder|oneBitAdder:bit3
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|divider4bit:myDiv|h2InMux4bit:resultMux
+w0[0] => y.IN0
+w0[1] => y.IN0
+w0[2] => y.IN0
+w0[3] => y.IN0
+w1[0] => y.IN0
+w1[1] => y.IN0
+w1[2] => y.IN0
+w1[3] => y.IN0
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+y[0] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[1] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[2] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[3] <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti
+multiplier[0] => PI[0].IN0
+multiplier[0] => twoComp:input1.A[0]
+multiplier[1] => twoComp:input1.A[1]
+multiplier[2] => twoComp:input1.A[2]
+multiplier[3] => convertBack.IN0
+multiplier[3] => twoComp:input1.A[3]
+multiplier[3] => twoComp:input1.enable
+multiplicand[0] => PI[0].IN1
+multiplicand[0] => twoComp:input2.A[0]
+multiplicand[1] => twoComp:input2.A[1]
+multiplicand[2] => twoComp:input2.A[2]
+multiplicand[3] => convertBack.IN1
+multiplicand[3] => twoComp:input2.A[3]
+multiplicand[3] => twoComp:input2.enable
+P[0] <= h2InMux:mux.y[0]
+P[1] <= h2InMux:mux.y[1]
+P[2] <= h2InMux:mux.y[2]
+P[3] <= h2InMux:mux.y[3]
+P[4] <= h2InMux:mux.y[4]
+P[5] <= h2InMux:mux.y[5]
+P[6] <= h2InMux:mux.y[6]
+P[7] <= h2InMux:mux.y[7]
+
+
+|datapath|multiplier4bit:myMulti|twoComp:input1
+A[0] => h2InMux4bit:mux.w0[0]
+A[0] => fourbitaddsub:fourBitAdder.i_Ai[0]
+A[1] => h2InMux4bit:mux.w0[1]
+A[1] => fourbitaddsub:fourBitAdder.i_Ai[1]
+A[2] => h2InMux4bit:mux.w0[2]
+A[2] => fourbitaddsub:fourBitAdder.i_Ai[2]
+A[3] => h2InMux4bit:mux.w0[3]
+A[3] => fourbitaddsub:fourBitAdder.i_Ai[3]
+enable => h2InMux4bit:mux.en
+enable => isConverted.DATAIN
+isConverted <= enable.DB_MAX_OUTPUT_PORT_TYPE
+AC[0] <= h2InMux4bit:mux.y[0]
+AC[1] <= h2InMux4bit:mux.y[1]
+AC[2] <= h2InMux4bit:mux.y[2]
+AC[3] <= h2InMux4bit:mux.y[3]
+
+
+|datapath|multiplier4bit:myMulti|twoComp:input1|fourbitaddsub:fourBitAdder
+i_Ai[0] => oneBitAdder:bit0.i_Ai
+i_Ai[1] => oneBitAdder:bit1.i_Ai
+i_Ai[2] => oneBitAdder:bit2.i_Ai
+i_Ai[3] => oneBitAdder:bit3.i_Ai
+i_Bi[0] => XORout[0].IN0
+i_Bi[1] => XORout[1].IN0
+i_Bi[2] => XORout[2].IN0
+i_Bi[3] => XORout[3].IN0
+carryOut <= oneBitAdder:bit3.o_CarryOut
+controller => XORout[0].IN1
+controller => XORout[1].IN1
+controller => XORout[2].IN1
+controller => XORout[3].IN1
+controller => oneBitAdder:bit0.i_CarryIn
+o_Sum[0] <= oneBitAdder:bit0.o_Sum
+o_Sum[1] <= oneBitAdder:bit1.o_Sum
+o_Sum[2] <= oneBitAdder:bit2.o_Sum
+o_Sum[3] <= oneBitAdder:bit3.o_Sum
+overflow <= overflow.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|twoComp:input1|fourbitaddsub:fourBitAdder|oneBitAdder:bit0
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|twoComp:input1|fourbitaddsub:fourBitAdder|oneBitAdder:bit1
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|twoComp:input1|fourbitaddsub:fourBitAdder|oneBitAdder:bit2
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|twoComp:input1|fourbitaddsub:fourBitAdder|oneBitAdder:bit3
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|twoComp:input1|h2InMux4bit:mux
+w0[0] => y.IN0
+w0[1] => y.IN0
+w0[2] => y.IN0
+w0[3] => y.IN0
+w1[0] => y.IN0
+w1[1] => y.IN0
+w1[2] => y.IN0
+w1[3] => y.IN0
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+y[0] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[1] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[2] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[3] <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|twoComp:input2
+A[0] => h2InMux4bit:mux.w0[0]
+A[0] => fourbitaddsub:fourBitAdder.i_Ai[0]
+A[1] => h2InMux4bit:mux.w0[1]
+A[1] => fourbitaddsub:fourBitAdder.i_Ai[1]
+A[2] => h2InMux4bit:mux.w0[2]
+A[2] => fourbitaddsub:fourBitAdder.i_Ai[2]
+A[3] => h2InMux4bit:mux.w0[3]
+A[3] => fourbitaddsub:fourBitAdder.i_Ai[3]
+enable => h2InMux4bit:mux.en
+enable => isConverted.DATAIN
+isConverted <= enable.DB_MAX_OUTPUT_PORT_TYPE
+AC[0] <= h2InMux4bit:mux.y[0]
+AC[1] <= h2InMux4bit:mux.y[1]
+AC[2] <= h2InMux4bit:mux.y[2]
+AC[3] <= h2InMux4bit:mux.y[3]
+
+
+|datapath|multiplier4bit:myMulti|twoComp:input2|fourbitaddsub:fourBitAdder
+i_Ai[0] => oneBitAdder:bit0.i_Ai
+i_Ai[1] => oneBitAdder:bit1.i_Ai
+i_Ai[2] => oneBitAdder:bit2.i_Ai
+i_Ai[3] => oneBitAdder:bit3.i_Ai
+i_Bi[0] => XORout[0].IN0
+i_Bi[1] => XORout[1].IN0
+i_Bi[2] => XORout[2].IN0
+i_Bi[3] => XORout[3].IN0
+carryOut <= oneBitAdder:bit3.o_CarryOut
+controller => XORout[0].IN1
+controller => XORout[1].IN1
+controller => XORout[2].IN1
+controller => XORout[3].IN1
+controller => oneBitAdder:bit0.i_CarryIn
+o_Sum[0] <= oneBitAdder:bit0.o_Sum
+o_Sum[1] <= oneBitAdder:bit1.o_Sum
+o_Sum[2] <= oneBitAdder:bit2.o_Sum
+o_Sum[3] <= oneBitAdder:bit3.o_Sum
+overflow <= overflow.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|twoComp:input2|fourbitaddsub:fourBitAdder|oneBitAdder:bit0
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|twoComp:input2|fourbitaddsub:fourBitAdder|oneBitAdder:bit1
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|twoComp:input2|fourbitaddsub:fourBitAdder|oneBitAdder:bit2
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|twoComp:input2|fourbitaddsub:fourBitAdder|oneBitAdder:bit3
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|twoComp:input2|h2InMux4bit:mux
+w0[0] => y.IN0
+w0[1] => y.IN0
+w0[2] => y.IN0
+w0[3] => y.IN0
+w1[0] => y.IN0
+w1[1] => y.IN0
+w1[2] => y.IN0
+w1[3] => y.IN0
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+y[0] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[1] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[2] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[3] <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|oneBitAdder:FA1
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|oneBitAdder:FA2
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|oneBitAdder:FA3
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|oneBitAdder:FA4
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|oneBitAdder:FA5
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|oneBitAdder:FA6
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|oneBitAdder:FA7
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|oneBitAdder:FA8
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|halfAdder:HA1
+A => carryout.IN0
+A => sum.IN0
+B => carryout.IN1
+B => sum.IN1
+sum <= sum.DB_MAX_OUTPUT_PORT_TYPE
+carryout <= carryout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|halfAdder:HA2
+A => carryout.IN0
+A => sum.IN0
+B => carryout.IN1
+B => sum.IN1
+sum <= sum.DB_MAX_OUTPUT_PORT_TYPE
+carryout <= carryout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|halfAdder:HA3
+A => carryout.IN0
+A => sum.IN0
+B => carryout.IN1
+B => sum.IN1
+sum <= sum.DB_MAX_OUTPUT_PORT_TYPE
+carryout <= carryout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|halfAdder:HA4
+A => carryout.IN0
+A => sum.IN0
+B => carryout.IN1
+B => sum.IN1
+sum <= sum.DB_MAX_OUTPUT_PORT_TYPE
+carryout <= carryout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder
+i_Ai[0] => oneBitAdder:bit0.i_Ai
+i_Ai[1] => oneBitAdder:bit1.i_Ai
+i_Ai[2] => oneBitAdder:bit2.i_Ai
+i_Ai[3] => oneBitAdder:bit3.i_Ai
+i_Ai[4] => oneBitAdder:bit4.i_Ai
+i_Ai[5] => oneBitAdder:bit5.i_Ai
+i_Ai[6] => oneBitAdder:bit6.i_Ai
+i_Ai[7] => oneBitAdder:bit7.i_Ai
+i_Bi[0] => oneBitAdder:bit0.i_Bi
+i_Bi[1] => oneBitAdder:bit1.i_Bi
+i_Bi[2] => oneBitAdder:bit2.i_Bi
+i_Bi[3] => oneBitAdder:bit3.i_Bi
+i_Bi[4] => oneBitAdder:bit4.i_Bi
+i_Bi[5] => oneBitAdder:bit5.i_Bi
+i_Bi[6] => oneBitAdder:bit6.i_Bi
+i_Bi[7] => oneBitAdder:bit7.i_Bi
+carryOut <= oneBitAdder:bit7.o_CarryOut
+carryIn => oneBitAdder:bit0.i_CarryIn
+o_Sum[0] <= oneBitAdder:bit0.o_Sum
+o_Sum[1] <= oneBitAdder:bit1.o_Sum
+o_Sum[2] <= oneBitAdder:bit2.o_Sum
+o_Sum[3] <= oneBitAdder:bit3.o_Sum
+o_Sum[4] <= oneBitAdder:bit4.o_Sum
+o_Sum[5] <= oneBitAdder:bit5.o_Sum
+o_Sum[6] <= oneBitAdder:bit6.o_Sum
+o_Sum[7] <= oneBitAdder:bit7.o_Sum
+
+
+|datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit0
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit1
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit2
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit3
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit4
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit5
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit6
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit7
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|multiplier4bit:myMulti|h2InMux:mux
+w0[0] => y.IN0
+w0[1] => y.IN0
+w0[2] => y.IN0
+w0[3] => y.IN0
+w0[4] => y.IN0
+w0[5] => y.IN0
+w0[6] => y.IN0
+w0[7] => y.IN0
+w1[0] => y.IN0
+w1[1] => y.IN0
+w1[2] => y.IN0
+w1[3] => y.IN0
+w1[4] => y.IN0
+w1[5] => y.IN0
+w1[6] => y.IN0
+w1[7] => y.IN0
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+y[0] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[1] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[2] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[3] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[4] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[5] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[6] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[7] <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|fourbitaddsub:addSub
+i_Ai[0] => oneBitAdder:bit0.i_Ai
+i_Ai[1] => oneBitAdder:bit1.i_Ai
+i_Ai[2] => oneBitAdder:bit2.i_Ai
+i_Ai[3] => oneBitAdder:bit3.i_Ai
+i_Bi[0] => XORout[0].IN0
+i_Bi[1] => XORout[1].IN0
+i_Bi[2] => XORout[2].IN0
+i_Bi[3] => XORout[3].IN0
+carryOut <= oneBitAdder:bit3.o_CarryOut
+controller => XORout[0].IN1
+controller => XORout[1].IN1
+controller => XORout[2].IN1
+controller => XORout[3].IN1
+controller => oneBitAdder:bit0.i_CarryIn
+o_Sum[0] <= oneBitAdder:bit0.o_Sum
+o_Sum[1] <= oneBitAdder:bit1.o_Sum
+o_Sum[2] <= oneBitAdder:bit2.o_Sum
+o_Sum[3] <= oneBitAdder:bit3.o_Sum
+overflow <= overflow.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|fourbitaddsub:addSub|oneBitAdder:bit0
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|fourbitaddsub:addSub|oneBitAdder:bit1
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|fourbitaddsub:addSub|oneBitAdder:bit2
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|fourbitaddsub:addSub|oneBitAdder:bit3
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|fourMux:outputMux
+uw0[0] => h2InMux:twoIN0.w0[0]
+uw0[1] => h2InMux:twoIN0.w0[1]
+uw0[2] => h2InMux:twoIN0.w0[2]
+uw0[3] => h2InMux:twoIN0.w0[3]
+uw0[4] => h2InMux:twoIN0.w0[4]
+uw0[5] => h2InMux:twoIN0.w0[5]
+uw0[6] => h2InMux:twoIN0.w0[6]
+uw0[7] => h2InMux:twoIN0.w0[7]
+uw1[0] => h2InMux:twoIN0.w1[0]
+uw1[1] => h2InMux:twoIN0.w1[1]
+uw1[2] => h2InMux:twoIN0.w1[2]
+uw1[3] => h2InMux:twoIN0.w1[3]
+uw1[4] => h2InMux:twoIN0.w1[4]
+uw1[5] => h2InMux:twoIN0.w1[5]
+uw1[6] => h2InMux:twoIN0.w1[6]
+uw1[7] => h2InMux:twoIN0.w1[7]
+uw2[0] => h2InMux:twoIN1.w0[0]
+uw2[1] => h2InMux:twoIN1.w0[1]
+uw2[2] => h2InMux:twoIN1.w0[2]
+uw2[3] => h2InMux:twoIN1.w0[3]
+uw2[4] => h2InMux:twoIN1.w0[4]
+uw2[5] => h2InMux:twoIN1.w0[5]
+uw2[6] => h2InMux:twoIN1.w0[6]
+uw2[7] => h2InMux:twoIN1.w0[7]
+uw3[0] => h2InMux:twoIN1.w1[0]
+uw3[1] => h2InMux:twoIN1.w1[1]
+uw3[2] => h2InMux:twoIN1.w1[2]
+uw3[3] => h2InMux:twoIN1.w1[3]
+uw3[4] => h2InMux:twoIN1.w1[4]
+uw3[5] => h2InMux:twoIN1.w1[5]
+uw3[6] => h2InMux:twoIN1.w1[6]
+uw3[7] => h2InMux:twoIN1.w1[7]
+s0 => h2InMux:twoIN0.en
+s0 => h2InMux:twoIN1.en
+s1 => h2InMux:twoIN2.en
+uy[0] <= h2InMux:twoIN2.y[0]
+uy[1] <= h2InMux:twoIN2.y[1]
+uy[2] <= h2InMux:twoIN2.y[2]
+uy[3] <= h2InMux:twoIN2.y[3]
+uy[4] <= h2InMux:twoIN2.y[4]
+uy[5] <= h2InMux:twoIN2.y[5]
+uy[6] <= h2InMux:twoIN2.y[6]
+uy[7] <= h2InMux:twoIN2.y[7]
+
+
+|datapath|fourMux:outputMux|h2InMux:twoIN0
+w0[0] => y.IN0
+w0[1] => y.IN0
+w0[2] => y.IN0
+w0[3] => y.IN0
+w0[4] => y.IN0
+w0[5] => y.IN0
+w0[6] => y.IN0
+w0[7] => y.IN0
+w1[0] => y.IN0
+w1[1] => y.IN0
+w1[2] => y.IN0
+w1[3] => y.IN0
+w1[4] => y.IN0
+w1[5] => y.IN0
+w1[6] => y.IN0
+w1[7] => y.IN0
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+y[0] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[1] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[2] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[3] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[4] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[5] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[6] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[7] <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|fourMux:outputMux|h2InMux:twoIN1
+w0[0] => y.IN0
+w0[1] => y.IN0
+w0[2] => y.IN0
+w0[3] => y.IN0
+w0[4] => y.IN0
+w0[5] => y.IN0
+w0[6] => y.IN0
+w0[7] => y.IN0
+w1[0] => y.IN0
+w1[1] => y.IN0
+w1[2] => y.IN0
+w1[3] => y.IN0
+w1[4] => y.IN0
+w1[5] => y.IN0
+w1[6] => y.IN0
+w1[7] => y.IN0
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+y[0] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[1] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[2] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[3] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[4] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[5] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[6] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[7] <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|fourMux:outputMux|h2InMux:twoIN2
+w0[0] => y.IN0
+w0[1] => y.IN0
+w0[2] => y.IN0
+w0[3] => y.IN0
+w0[4] => y.IN0
+w0[5] => y.IN0
+w0[6] => y.IN0
+w0[7] => y.IN0
+w1[0] => y.IN0
+w1[1] => y.IN0
+w1[2] => y.IN0
+w1[3] => y.IN0
+w1[4] => y.IN0
+w1[5] => y.IN0
+w1[6] => y.IN0
+w1[7] => y.IN0
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+en => y.IN1
+y[0] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[1] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[2] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[3] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[4] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[5] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[6] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[7] <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -36,11 +36,12 @@ ENTITY fourbitaddsub IS
 		i_Ai, i_Bi		: IN	STD_LOGIC_VECTOR(3 downto 0);
 		carryOut		: OUT	STD_LOGIC;
 		controller: in std_logic;
-		o_Sum			: OUT	STD_LOGIC_VECTOR(3 downto 0));
+		o_Sum			: OUT	STD_LOGIC_VECTOR(3 downto 0);
+		overflow: out std_logic);
 END fourbitaddsub;
 
 ARCHITECTURE rtl OF fourbitaddsub IS
-	SIGNAL int_Sum, int_CarryOut : STD_LOGIC_VECTOR(2 downto 0);
+	SIGNAL int_CarryOut : STD_LOGIC_VECTOR(3 downto 0);
 	SIGNAL gnd : STD_LOGIC;
 	signal XORout: std_logic_vector(3 downto 0);
 
@@ -87,8 +88,12 @@ bit3: oneBitAdder
 			  i_Ai => i_Ai(3),
 			  i_Bi => XORout(3),
 			  o_Sum => o_Sum(3),
-			  o_CarryOut => carryOut);
+			  o_CarryOut => int_CarryOut(3));
+			  
 
-
+			  
+			  
+overflow <= int_CarryOut(2) XOR int_CarryOut(3);
+carryOut <= int_CarryOut(3);
 
 END rtl;

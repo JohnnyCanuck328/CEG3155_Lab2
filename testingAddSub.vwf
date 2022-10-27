@@ -202,13 +202,22 @@ SIGNAL("controller")
 	PARENT = "";
 }
 
+SIGNAL("overflow")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
 TRANSITION_LIST("i_Ai[3]")
 {
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 10.0;
-		LEVEL 0 FOR 10.0;
+		LEVEL 0 FOR 20.0;
 	}
 }
 
@@ -217,7 +226,8 @@ TRANSITION_LIST("i_Ai[2]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 0 FOR 20.0;
+		LEVEL 1 FOR 2.0;
+		LEVEL 0 FOR 18.0;
 	}
 }
 
@@ -226,7 +236,8 @@ TRANSITION_LIST("i_Ai[1]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 0 FOR 20.0;
+		LEVEL 1 FOR 2.0;
+		LEVEL 0 FOR 18.0;
 	}
 }
 
@@ -235,7 +246,8 @@ TRANSITION_LIST("i_Ai[0]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 0 FOR 20.0;
+		LEVEL 1 FOR 2.0;
+		LEVEL 0 FOR 18.0;
 	}
 }
 
@@ -253,7 +265,8 @@ TRANSITION_LIST("i_Bi[2]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 0 FOR 20.0;
+		LEVEL 1 FOR 2.0;
+		LEVEL 0 FOR 18.0;
 	}
 }
 
@@ -262,7 +275,8 @@ TRANSITION_LIST("i_Bi[1]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 0 FOR 20.0;
+		LEVEL 1 FOR 2.0;
+		LEVEL 0 FOR 18.0;
 	}
 }
 
@@ -271,8 +285,8 @@ TRANSITION_LIST("i_Bi[0]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 10.0;
-		LEVEL 0 FOR 10.0;
+		LEVEL 1 FOR 2.0;
+		LEVEL 0 FOR 18.0;
 	}
 }
 
@@ -326,9 +340,16 @@ TRANSITION_LIST("controller")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 0 FOR 4.0;
-		LEVEL 1 FOR 6.0;
-		LEVEL 0 FOR 10.0;
+		LEVEL 0 FOR 20.0;
+	}
+}
+
+TRANSITION_LIST("overflow")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 20.0;
 	}
 }
 
@@ -497,6 +518,15 @@ DISPLAY_LINE
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 16;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "overflow";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 17;
 	TREE_LEVEL = 0;
 }
 
