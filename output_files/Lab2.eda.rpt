@@ -1,5 +1,5 @@
 EDA Netlist Writer report for Lab2
-Thu Oct 27 13:04:13 2022
+Fri Oct 28 07:39:13 2022
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -36,7 +36,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Thu Oct 27 13:04:13 2022 ;
+; EDA Netlist Writer Status ; Successful - Fri Oct 28 07:39:13 2022 ;
 ; Revision Name             ; Lab2                                  ;
 ; Top-level Entity Name     ; datapath                              ;
 ; Family                    ; Cyclone V                             ;
@@ -93,7 +93,7 @@ Info: Running Quartus II 64-Bit EDA Netlist Writer
     Info: programming logic devices manufactured by Altera and sold by 
     Info: Altera or its authorized distributors.  Please refer to the 
     Info: applicable agreement for further details.
-    Info: Processing started: Thu Oct 27 13:04:12 2022
+    Info: Processing started: Fri Oct 28 07:39:11 2022
 Info: Command: quartus_eda --functional=on --flatten_buses=off --simulation=on --tool=modelsim_oem --format=verilog --output_directory=C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/simulation/qsim/ Lab2 -c Lab2
 Warning (136002): Ignored duplicate of assignment HIERARCHY_BLACKBOX_FILE for node "|"
 Warning (136002): Ignored duplicate of assignment PARTITION_PRESERVE_HIGH_SPEED_TILES for node ""
@@ -170,8 +170,8 @@ Warning (20013): Ignored assignments for entity "eightBitAddSub" -- entity does 
     Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ENABLE_STRICT_PRESERVATION OFF -entity eightBitAddSub -section_id Top was ignored
 Info (204019): Generated file Lab2.vo in folder "C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/simulation/qsim//" for EDA simulation tool
 Info: Quartus II 64-Bit EDA Netlist Writer was successful. 0 errors, 73 warnings
-    Info: Peak virtual memory: 4646 megabytes
-    Info: Processing ended: Thu Oct 27 13:04:14 2022
+    Info: Peak virtual memory: 4639 megabytes
+    Info: Processing ended: Fri Oct 28 07:39:13 2022
     Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:01
 

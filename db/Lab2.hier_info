@@ -26,14 +26,16 @@ num1[3] => fourbitaddsub:addSub.i_Bi[3]
 sel0 => fourbitaddsub:addSub.controller
 sel0 => fourMux:outputMux.s0
 sel1 => fourMux:outputMux.s1
-result[0] <= fourMux:outputMux.uy[0]
-result[1] <= fourMux:outputMux.uy[1]
-result[2] <= fourMux:outputMux.uy[2]
-result[3] <= fourMux:outputMux.uy[3]
-result[4] <= fourMux:outputMux.uy[4]
-result[5] <= fourMux:outputMux.uy[5]
-result[6] <= fourMux:outputMux.uy[6]
-result[7] <= fourMux:outputMux.uy[7]
+g_clk => eightBitLeftShift:Display.clk
+globalRes => eightBitLeftShift:Display.reset
+result[0] << eightBitLeftShift:Display.output0
+result[1] << eightBitLeftShift:Display.output1
+result[2] << eightBitLeftShift:Display.output2
+result[3] << eightBitLeftShift:Display.output3
+result[4] << eightBitLeftShift:Display.output4
+result[5] << eightBitLeftShift:Display.output5
+result[6] << eightBitLeftShift:Display.output6
+result[7] << eightBitLeftShift:Display.output7
 
 
 |datapath|divider4bit:myDiv
@@ -1275,5 +1277,145 @@ y[4] <= y.DB_MAX_OUTPUT_PORT_TYPE
 y[5] <= y.DB_MAX_OUTPUT_PORT_TYPE
 y[6] <= y.DB_MAX_OUTPUT_PORT_TYPE
 y[7] <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|eightBitLeftShift:Display
+controller => loadOp0.IN0
+controller => loadOp1.IN0
+controller => loadOp2.IN0
+controller => loadOp3.IN0
+controller => loadOp4.IN0
+controller => loadOp5.IN0
+controller => loadOp6.IN0
+controller => loadOp7.IN0
+controller => shiftOp0.IN0
+controller => shiftOp1.IN1
+controller => shiftOp2.IN1
+controller => shiftOp3.IN1
+controller => shiftOp4.IN1
+controller => shiftOp5.IN1
+controller => shiftOp6.IN1
+controller => shiftOp7.IN1
+clk => enardff_2:bit0.i_clock
+clk => enardff_2:bit1.i_clock
+clk => enardff_2:bit2.i_clock
+clk => enardff_2:bit3.i_clock
+clk => enardff_2:bit4.i_clock
+clk => enardff_2:bit5.i_clock
+clk => enardff_2:bit6.i_clock
+clk => enardff_2:bit7.i_clock
+reset => enardff_2:bit0.i_resetBar
+reset => enardff_2:bit1.i_resetBar
+reset => enardff_2:bit2.i_resetBar
+reset => enardff_2:bit3.i_resetBar
+reset => enardff_2:bit4.i_resetBar
+reset => enardff_2:bit5.i_resetBar
+reset => enardff_2:bit6.i_resetBar
+reset => enardff_2:bit7.i_resetBar
+shiftIn => shiftOp0.IN1
+enable => enardff_2:bit0.i_enable
+enable => enardff_2:bit1.i_enable
+enable => enardff_2:bit2.i_enable
+enable => enardff_2:bit3.i_enable
+enable => enardff_2:bit4.i_enable
+enable => enardff_2:bit5.i_enable
+enable => enardff_2:bit6.i_enable
+enable => enardff_2:bit7.i_enable
+inp[0] => loadOp0.IN1
+inp[1] => loadOp1.IN1
+inp[2] => loadOp2.IN1
+inp[3] => loadOp3.IN1
+inp[4] => loadOp4.IN1
+inp[5] => loadOp5.IN1
+inp[6] => loadOp6.IN1
+inp[7] => loadOp7.IN1
+output0 <= enardff_2:bit0.o_q
+output1 <= enardff_2:bit1.o_q
+output2 <= enardff_2:bit2.o_q
+output3 <= enardff_2:bit3.o_q
+output4 <= enardff_2:bit4.o_q
+output5 <= enardff_2:bit5.o_q
+output6 <= enardff_2:bit6.o_q
+output7 <= enardff_2:bit7.o_q
+NOToutput[0] <= enardff_2:bit0.o_qBar
+NOToutput[1] <= enardff_2:bit1.o_qBar
+NOToutput[2] <= enardff_2:bit2.o_qBar
+NOToutput[3] <= enardff_2:bit3.o_qBar
+NOToutput[4] <= enardff_2:bit4.o_qBar
+NOToutput[5] <= enardff_2:bit5.o_qBar
+NOToutput[6] <= enardff_2:bit6.o_qBar
+NOToutput[7] <= enardff_2:bit7.o_qBar
+
+
+|datapath|eightBitLeftShift:Display|enARdFF_2:bit0
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|eightBitLeftShift:Display|enARdFF_2:bit1
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|eightBitLeftShift:Display|enARdFF_2:bit2
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|eightBitLeftShift:Display|enARdFF_2:bit3
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|eightBitLeftShift:Display|enARdFF_2:bit4
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|eightBitLeftShift:Display|enARdFF_2:bit5
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|eightBitLeftShift:Display|enARdFF_2:bit6
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|datapath|eightBitLeftShift:Display|enARdFF_2:bit7
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 

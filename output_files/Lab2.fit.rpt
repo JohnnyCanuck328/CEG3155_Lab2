@@ -1,5 +1,5 @@
 Fitter report for Lab2
-Thu Oct 27 11:37:01 2022
+Fri Oct 28 07:36:02 2022
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -11,28 +11,31 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
   3. Fitter Settings
   4. Parallel Compilation
   5. I/O Assignment Warnings
-  6. Incremental Compilation Preservation Summary
-  7. Incremental Compilation Partition Settings
-  8. Incremental Compilation Placement Preservation
-  9. Pin-Out File
- 10. Fitter Resource Usage Summary
- 11. Fitter Partition Statistics
- 12. Input Pins
- 13. Output Pins
- 14. I/O Bank Usage
- 15. All Package Pins
- 16. Fitter Resource Utilization by Entity
- 17. Delay Chain Summary
- 18. Pad To Core Delay Chain Fanout
- 19. Non-Global High Fan-Out Signals
- 20. Routing Usage Summary
- 21. I/O Rules Summary
- 22. I/O Rules Details
- 23. I/O Rules Matrix
- 24. Fitter Device Options
- 25. Operating Settings and Conditions
- 26. Fitter Messages
- 27. Fitter Suppressed Messages
+  6. Fitter Netlist Optimizations
+  7. Incremental Compilation Preservation Summary
+  8. Incremental Compilation Partition Settings
+  9. Incremental Compilation Placement Preservation
+ 10. Pin-Out File
+ 11. Fitter Resource Usage Summary
+ 12. Fitter Partition Statistics
+ 13. Input Pins
+ 14. Output Pins
+ 15. I/O Bank Usage
+ 16. All Package Pins
+ 17. Fitter Resource Utilization by Entity
+ 18. Delay Chain Summary
+ 19. Pad To Core Delay Chain Fanout
+ 20. Control Signals
+ 21. Global & Other Fast Signals
+ 22. Non-Global High Fan-Out Signals
+ 23. Routing Usage Summary
+ 24. I/O Rules Summary
+ 25. I/O Rules Details
+ 26. I/O Rules Matrix
+ 27. Fitter Device Options
+ 28. Operating Settings and Conditions
+ 29. Fitter Messages
+ 30. Fitter Suppressed Messages
 
 
 
@@ -58,7 +61,7 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------+
 ; Fitter Summary                                                               ;
 +---------------------------------+--------------------------------------------+
-; Fitter Status                   ; Successful - Thu Oct 27 11:37:01 2022      ;
+; Fitter Status                   ; Successful - Fri Oct 28 07:36:02 2022      ;
 ; Quartus II 64-Bit Version       ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                   ; Lab2                                       ;
 ; Top-level Entity Name           ; datapath                                   ;
@@ -66,8 +69,8 @@ applicable agreement for further details.
 ; Device                          ; 5CGXFC7C6U19I7                             ;
 ; Timing Models                   ; Final                                      ;
 ; Logic utilization (in ALMs)     ; 47 / 56,480 ( < 1 % )                      ;
-; Total registers                 ; 0                                          ;
-; Total pins                      ; 18 / 268 ( 7 % )                           ;
+; Total registers                 ; 8                                          ;
+; Total pins                      ; 20 / 268 ( 7 % )                           ;
 ; Total virtual pins              ; 0                                          ;
 ; Total block memory bits         ; 0 / 7,024,640 ( 0 % )                      ;
 ; Total DSP Blocks                ; 0 / 156 ( 0 % )                            ;
@@ -145,14 +148,13 @@ applicable agreement for further details.
 ; Number detected on machine ; 12          ;
 ; Maximum allowed            ; 12          ;
 ;                            ;             ;
-; Average used               ; 3.19        ;
+; Average used               ; 2.57        ;
 ; Maximum used               ; 12          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;  26.9%      ;
-;     Processors 5-8         ;  23.1%      ;
-;     Processors 9-12        ;  11.5%      ;
+;     Processors 2-8         ;  16.7%      ;
+;     Processors 9-12        ;  10.0%      ;
 +----------------------------+-------------+
 
 
@@ -179,7 +181,18 @@ applicable agreement for further details.
 ; num0[3]   ; Incomplete set of assignments ;
 ; num0[1]   ; Incomplete set of assignments ;
 ; num0[2]   ; Incomplete set of assignments ;
+; g_clk     ; Incomplete set of assignments ;
+; globalRes ; Incomplete set of assignments ;
 +-----------+-------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fitter Netlist Optimizations                                                                                                                                     ;
++--------------------+---------+-----------+----------------------------+-----------+----------------+------------------+------------------+-----------------------+
+; Node               ; Action  ; Operation ; Reason                     ; Node Port ; Node Port Name ; Destination Node ; Destination Port ; Destination Port Name ;
++--------------------+---------+-----------+----------------------------+-----------+----------------+------------------+------------------+-----------------------+
+; g_clk~inputCLKENA0 ; Created ; Placement ; Fitter Periphery Placement ;           ;                ;                  ;                  ;                       ;
++--------------------+---------+-----------+----------------------------+-----------+----------------+------------------+------------------+-----------------------+
 
 
 +--------------------------------------------------------------------------------------------------+
@@ -188,8 +201,8 @@ applicable agreement for further details.
 ; Type                ; Total [A + B]      ; From Design Partitions [A] ; From Rapid Recompile [B] ;
 +---------------------+--------------------+----------------------------+--------------------------+
 ; Placement (by node) ;                    ;                            ;                          ;
-;     -- Requested    ; 0.00 % ( 0 / 106 ) ; 0.00 % ( 0 / 106 )         ; 0.00 % ( 0 / 106 )       ;
-;     -- Achieved     ; 0.00 % ( 0 / 106 ) ; 0.00 % ( 0 / 106 )         ; 0.00 % ( 0 / 106 )       ;
+;     -- Requested    ; 0.00 % ( 0 / 119 ) ; 0.00 % ( 0 / 119 )         ; 0.00 % ( 0 / 119 )       ;
+;     -- Achieved     ; 0.00 % ( 0 / 119 ) ; 0.00 % ( 0 / 119 )         ; 0.00 % ( 0 / 119 )       ;
 ;                     ;                    ;                            ;                          ;
 ; Routing (by net)    ;                    ;                            ;                          ;
 ;     -- Requested    ; 0.00 % ( 0 / 0 )   ; 0.00 % ( 0 / 0 )           ; 0.00 % ( 0 / 0 )         ;
@@ -212,7 +225,7 @@ applicable agreement for further details.
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 ; Partition Name                 ; Preservation Achieved ; Preservation Level Used ; Netlist Type Used ; Preservation Method ; Notes ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
-; Top                            ; 0.00 % ( 0 / 106 )    ; N/A                     ; Source File       ; N/A                 ;       ;
+; Top                            ; 0.00 % ( 0 / 119 )    ; N/A                     ; Source File       ; N/A                 ;       ;
 ; hard_block:auto_generated_inst ; 0.00 % ( 0 / 0 )      ; N/A                     ; Source File       ; N/A                 ;       ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 
@@ -231,8 +244,8 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 ; Logic utilization (ALMs needed / total ALMs on device)      ; 47 / 56,480   ; < 1 % ;
 ; ALMs needed [=A-B+C]                                        ; 47            ;       ;
 ;     [A] ALMs used in final placement [=a+b+c+d]             ; 47 / 56,480   ; < 1 % ;
-;         [a] ALMs used for LUT logic and registers           ; 0             ;       ;
-;         [b] ALMs used for LUT logic                         ; 47            ;       ;
+;         [a] ALMs used for LUT logic and registers           ; 4             ;       ;
+;         [b] ALMs used for LUT logic                         ; 43            ;       ;
 ;         [c] ALMs used for registers                         ; 0             ;       ;
 ;         [d] ALMs used for memory (up to half of total ALMs) ; 0             ;       ;
 ;     [B] Estimate of ALMs recoverable by dense packing       ; 0 / 56,480    ; 0 %   ;
@@ -244,8 +257,8 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 ;                                                             ;               ;       ;
 ; Difficulty packing design                                   ; Low           ;       ;
 ;                                                             ;               ;       ;
-; Total LABs:  partially or completely used                   ; 7 / 5,648     ; < 1 % ;
-;     -- Logic LABs                                           ; 7             ;       ;
+; Total LABs:  partially or completely used                   ; 6 / 5,648     ; < 1 % ;
+;     -- Logic LABs                                           ; 6             ;       ;
 ;     -- Memory LABs (up to half of total LABs)               ; 0             ;       ;
 ;                                                             ;               ;       ;
 ; Combinational ALUT usage for logic                          ; 70            ;       ;
@@ -255,27 +268,27 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 ;     -- 4 input functions                                    ; 16            ;       ;
 ;     -- <=3 input functions                                  ; 15            ;       ;
 ; Combinational ALUT usage for route-throughs                 ; 0             ;       ;
-; Dedicated logic registers                                   ; 0             ;       ;
+; Dedicated logic registers                                   ; 8             ;       ;
 ;     -- By type:                                             ;               ;       ;
-;         -- Primary logic registers                          ; 0 / 112,960   ; 0 %   ;
+;         -- Primary logic registers                          ; 8 / 112,960   ; < 1 % ;
 ;         -- Secondary logic registers                        ; 0 / 112,960   ; 0 %   ;
 ;     -- By function:                                         ;               ;       ;
-;         -- Design implementation registers                  ; 0             ;       ;
+;         -- Design implementation registers                  ; 8             ;       ;
 ;         -- Routing optimization registers                   ; 0             ;       ;
 ;                                                             ;               ;       ;
 ; Virtual pins                                                ; 0             ;       ;
-; I/O pins                                                    ; 18 / 268      ; 7 %   ;
+; I/O pins                                                    ; 20 / 268      ; 7 %   ;
 ;     -- Clock pins                                           ; 1 / 12        ; 8 %   ;
 ;     -- Dedicated input pins                                 ; 0 / 23        ; 0 %   ;
 ;                                                             ;               ;       ;
-; Global signals                                              ; 0             ;       ;
+; Global signals                                              ; 1             ;       ;
 ; M10K blocks                                                 ; 0 / 686       ; 0 %   ;
 ; Total MLAB memory bits                                      ; 0             ;       ;
 ; Total block memory bits                                     ; 0 / 7,024,640 ; 0 %   ;
 ; Total block memory implementation bits                      ; 0 / 7,024,640 ; 0 %   ;
 ; Total DSP Blocks                                            ; 0 / 156       ; 0 %   ;
 ; Fractional PLLs                                             ; 0 / 7         ; 0 %   ;
-; Global clocks                                               ; 0 / 16        ; 0 %   ;
+; Global clocks                                               ; 1 / 16        ; 6 %   ;
 ; Quadrant clocks                                             ; 0 / 88        ; 0 %   ;
 ; Horizontal periphery clocks and Vertical periphery clocks   ; 0 / 18        ; 0 %   ;
 ; SERDES Transmitters                                         ; 0 / 120       ; 0 %   ;
@@ -296,8 +309,8 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 ; Peak interconnect usage (total/H/V)                         ; 0% / 0% / 0%  ;       ;
 ; Maximum fan-out                                             ; 27            ;       ;
 ; Highest non-global fan-out                                  ; 27            ;       ;
-; Total fan-out                                               ; 343           ;       ;
-; Average fan-out                                             ; 3.24          ;       ;
+; Total fan-out                                               ; 370           ;       ;
+; Average fan-out                                             ; 3.11          ;       ;
 +-------------------------------------------------------------+---------------+-------+
 
 
@@ -309,8 +322,8 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 ; Logic utilization (ALMs needed / total ALMs on device)      ; 47 / 56480 ( < 1 % ) ; 0 / 56480 ( 0 % )              ;
 ; ALMs needed [=A-B+C]                                        ; 47                   ; 0                              ;
 ;     [A] ALMs used in final placement [=a+b+c+d]             ; 47 / 56480 ( < 1 % ) ; 0 / 56480 ( 0 % )              ;
-;         [a] ALMs used for LUT logic and registers           ; 0                    ; 0                              ;
-;         [b] ALMs used for LUT logic                         ; 47                   ; 0                              ;
+;         [a] ALMs used for LUT logic and registers           ; 4                    ; 0                              ;
+;         [b] ALMs used for LUT logic                         ; 43                   ; 0                              ;
 ;         [c] ALMs used for registers                         ; 0                    ; 0                              ;
 ;         [d] ALMs used for memory (up to half of total ALMs) ; 0                    ; 0                              ;
 ;     [B] Estimate of ALMs recoverable by dense packing       ; 0 / 56480 ( 0 % )    ; 0 / 56480 ( 0 % )              ;
@@ -322,8 +335,8 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 ;                                                             ;                      ;                                ;
 ; Difficulty packing design                                   ; Low                  ; Low                            ;
 ;                                                             ;                      ;                                ;
-; Total LABs:  partially or completely used                   ; 7 / 5648 ( < 1 % )   ; 0 / 5648 ( 0 % )               ;
-;     -- Logic LABs                                           ; 7                    ; 0                              ;
+; Total LABs:  partially or completely used                   ; 6 / 5648 ( < 1 % )   ; 0 / 5648 ( 0 % )               ;
+;     -- Logic LABs                                           ; 6                    ; 0                              ;
 ;     -- Memory LABs (up to half of total LABs)               ; 0                    ; 0                              ;
 ;                                                             ;                      ;                                ;
 ; Combinational ALUT usage for logic                          ; 70                   ; 0                              ;
@@ -339,18 +352,19 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 ;                                                             ;                      ;                                ;
 ; Dedicated logic registers                                   ; 0                    ; 0                              ;
 ;     -- By type:                                             ;                      ;                                ;
-;         -- Primary logic registers                          ; 0 / 112960 ( 0 % )   ; 0 / 112960 ( 0 % )             ;
+;         -- Primary logic registers                          ; 8 / 112960 ( < 1 % ) ; 0 / 112960 ( 0 % )             ;
 ;         -- Secondary logic registers                        ; 0 / 112960 ( 0 % )   ; 0 / 112960 ( 0 % )             ;
 ;     -- By function:                                         ;                      ;                                ;
-;         -- Design implementation registers                  ; 0                    ; 0                              ;
+;         -- Design implementation registers                  ; 8                    ; 0                              ;
 ;         -- Routing optimization registers                   ; 0                    ; 0                              ;
 ;                                                             ;                      ;                                ;
 ;                                                             ;                      ;                                ;
 ; Virtual pins                                                ; 0                    ; 0                              ;
-; I/O pins                                                    ; 18                   ; 0                              ;
+; I/O pins                                                    ; 20                   ; 0                              ;
 ; I/O registers                                               ; 0                    ; 0                              ;
 ; Total block memory bits                                     ; 0                    ; 0                              ;
 ; Total block memory implementation bits                      ; 0                    ; 0                              ;
+; Clock enable block                                          ; 1 / 122 ( < 1 % )    ; 0 / 122 ( 0 % )                ;
 ;                                                             ;                      ;                                ;
 ; Connections                                                 ;                      ;                                ;
 ;     -- Input Connections                                    ; 0                    ; 0                              ;
@@ -359,15 +373,15 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 ;     -- Registered Output Connections                        ; 0                    ; 0                              ;
 ;                                                             ;                      ;                                ;
 ; Internal Connections                                        ;                      ;                                ;
-;     -- Total Connections                                    ; 343                  ; 0                              ;
-;     -- Registered Connections                               ; 0                    ; 0                              ;
+;     -- Total Connections                                    ; 370                  ; 0                              ;
+;     -- Registered Connections                               ; 8                    ; 0                              ;
 ;                                                             ;                      ;                                ;
 ; External Connections                                        ;                      ;                                ;
 ;     -- Top                                                  ; 0                    ; 0                              ;
 ;     -- hard_block:auto_generated_inst                       ; 0                    ; 0                              ;
 ;                                                             ;                      ;                                ;
 ; Partition Interface                                         ;                      ;                                ;
-;     -- Input Ports                                          ; 10                   ; 0                              ;
+;     -- Input Ports                                          ; 12                   ; 0                              ;
 ;     -- Output Ports                                         ; 8                    ; 0                              ;
 ;     -- Bidir Ports                                          ; 0                    ; 0                              ;
 ;                                                             ;                      ;                                ;
@@ -387,22 +401,24 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 +-------------------------------------------------------------+----------------------+--------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Input Pins                                                                                                                                                                                                                                                ;
-+---------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+-----------------+----------+--------------+--------------+-------------+---------------------------+----------------------+
-; Name    ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Z coordinate ; Combinational Fan-Out ; Registered Fan-Out ; Global ; PCI I/O Enabled ; Bus Hold ; Weak Pull Up ; I/O Standard ; Termination ; Termination Control Block ; Location assigned by ;
-+---------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+-----------------+----------+--------------+--------------+-------------+---------------------------+----------------------+
-; num0[0] ; G17   ; 5B       ; 89           ; 36           ; 54           ; 20                    ; 0                  ; no     ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ;
-; num0[1] ; H18   ; 5B       ; 89           ; 38           ; 54           ; 10                    ; 0                  ; no     ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ;
-; num0[2] ; F18   ; 5B       ; 89           ; 37           ; 54           ; 6                     ; 0                  ; no     ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ;
-; num0[3] ; F19   ; 5B       ; 89           ; 37           ; 37           ; 10                    ; 0                  ; no     ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ;
-; num1[0] ; J18   ; 5B       ; 89           ; 38           ; 20           ; 27                    ; 0                  ; no     ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ;
-; num1[1] ; E20   ; 5B       ; 89           ; 35           ; 77           ; 12                    ; 0                  ; no     ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ;
-; num1[2] ; H19   ; 5B       ; 89           ; 36           ; 20           ; 9                     ; 0                  ; no     ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ;
-; num1[3] ; H20   ; 5B       ; 89           ; 36           ; 3            ; 12                    ; 0                  ; no     ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ;
-; sel0    ; J16   ; 5B       ; 89           ; 37           ; 20           ; 11                    ; 0                  ; no     ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ;
-; sel1    ; K16   ; 5B       ; 89           ; 37           ; 3            ; 9                     ; 0                  ; no     ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ;
-+---------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+-----------------+----------+--------------+--------------+-------------+---------------------------+----------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Input Pins                                                                                                                                                                                                                                                  ;
++-----------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+-----------------+----------+--------------+--------------+-------------+---------------------------+----------------------+
+; Name      ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Z coordinate ; Combinational Fan-Out ; Registered Fan-Out ; Global ; PCI I/O Enabled ; Bus Hold ; Weak Pull Up ; I/O Standard ; Termination ; Termination Control Block ; Location assigned by ;
++-----------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+-----------------+----------+--------------+--------------+-------------+---------------------------+----------------------+
+; g_clk     ; K17   ; 5B       ; 89           ; 35           ; 60           ; 8                     ; 0                  ; yes    ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ;
+; globalRes ; V15   ; 4A       ; 62           ; 0            ; 0            ; 8                     ; 0                  ; no     ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ;
+; num0[0]   ; L20   ; 5B       ; 89           ; 29           ; 20           ; 20                    ; 0                  ; no     ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ;
+; num0[1]   ; AA15  ; 4A       ; 62           ; 0            ; 51           ; 10                    ; 0                  ; no     ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ;
+; num0[2]   ; L15   ; 5B       ; 89           ; 30           ; 3            ; 6                     ; 0                  ; no     ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ;
+; num0[3]   ; Y20   ; 4A       ; 60           ; 0            ; 34           ; 10                    ; 0                  ; no     ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ;
+; num1[0]   ; AB17  ; 4A       ; 68           ; 0            ; 34           ; 27                    ; 0                  ; no     ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ;
+; num1[1]   ; H21   ; 5B       ; 89           ; 32           ; 54           ; 12                    ; 0                  ; no     ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ;
+; num1[2]   ; U15   ; 4A       ; 62           ; 0            ; 17           ; 9                     ; 0                  ; no     ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ;
+; num1[3]   ; G22   ; 5B       ; 89           ; 30           ; 37           ; 12                    ; 0                  ; no     ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ;
+; sel0      ; B15   ; 7A       ; 62           ; 81           ; 51           ; 11                    ; 0                  ; no     ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ;
+; sel1      ; L17   ; 5B       ; 89           ; 35           ; 43           ; 9                     ; 0                  ; no     ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ;
++-----------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+-----------------+----------+--------------+--------------+-------------+---------------------------+----------------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -410,14 +426,14 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 +-----------+-------+----------+--------------+--------------+--------------+-----------------+-----------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-----------------------------------+---------------------------+----------------------------+-----------------------------+---------------------+-----------------------------+----------------------+----------------------+---------------------+
 ; Name      ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Z coordinate ; Output Register ; Slew Rate ; PCI I/O Enabled ; Open Drain ; TRI Primitive ; Bus Hold ; Weak Pull Up ; I/O Standard ; Current Strength ; Termination                       ; Termination Control Block ; Output Buffer Pre-emphasis ; Voltage Output Differential ; Output Buffer Delay ; Output Buffer Delay Control ; Location assigned by ; Output Enable Source ; Output Enable Group ;
 +-----------+-------+----------+--------------+--------------+--------------+-----------------+-----------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-----------------------------------+---------------------------+----------------------------+-----------------------------+---------------------+-----------------------------+----------------------+----------------------+---------------------+
-; result[0] ; K17   ; 5B       ; 89           ; 35           ; 60           ; no              ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
-; result[1] ; L18   ; 5B       ; 89           ; 32           ; 3            ; no              ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
-; result[2] ; J19   ; 5B       ; 89           ; 38           ; 37           ; no              ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
-; result[3] ; F20   ; 5B       ; 89           ; 35           ; 94           ; no              ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
-; result[4] ; L17   ; 5B       ; 89           ; 35           ; 43           ; no              ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
-; result[5] ; J17   ; 5B       ; 89           ; 38           ; 3            ; no              ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
-; result[6] ; G18   ; 5B       ; 89           ; 36           ; 37           ; no              ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
-; result[7] ; D18   ; 7A       ; 70           ; 81           ; 0            ; no              ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
+; result[0] ; G21   ; 5B       ; 89           ; 30           ; 54           ; no              ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
+; result[1] ; L19   ; 5B       ; 89           ; 29           ; 3            ; no              ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
+; result[2] ; E16   ; 7A       ; 66           ; 81           ; 40           ; no              ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
+; result[3] ; AA20  ; 4A       ; 60           ; 0            ; 51           ; no              ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
+; result[4] ; K19   ; 5B       ; 89           ; 32           ; 20           ; no              ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
+; result[5] ; G20   ; 5B       ; 89           ; 32           ; 37           ; no              ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
+; result[6] ; C18   ; 7A       ; 64           ; 81           ; 51           ; no              ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
+; result[7] ; K15   ; 5B       ; 89           ; 30           ; 20           ; no              ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
 +-----------+-------+----------+--------------+--------------+--------------+-----------------+-----------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-----------------------------------+---------------------------+----------------------------+-----------------------------+---------------------+-----------------------------+----------------------+----------------------+---------------------+
 
 
@@ -431,10 +447,10 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 ; B0L      ; 0 / 14 ( 0 % )   ; --            ; --           ; --            ;
 ; 3A       ; 0 / 16 ( 0 % )   ; 2.5V          ; --           ; 2.5V          ;
 ; 3B       ; 0 / 32 ( 0 % )   ; 2.5V          ; --           ; 2.5V          ;
-; 4A       ; 0 / 48 ( 0 % )   ; 2.5V          ; --           ; 2.5V          ;
+; 4A       ; 6 / 48 ( 13 % )  ; 2.5V          ; --           ; 2.5V          ;
 ; 5A       ; 0 / 16 ( 0 % )   ; 2.5V          ; --           ; 2.5V          ;
-; 5B       ; 17 / 48 ( 35 % ) ; 2.5V          ; --           ; 2.5V          ;
-; 7A       ; 1 / 48 ( 2 % )   ; 2.5V          ; --           ; 2.5V          ;
+; 5B       ; 11 / 48 ( 23 % ) ; 2.5V          ; --           ; 2.5V          ;
+; 7A       ; 3 / 48 ( 6 % )   ; 2.5V          ; --           ; 2.5V          ;
 ; 8A       ; 0 / 32 ( 0 % )   ; 2.5V          ; --           ; 2.5V          ;
 +----------+------------------+---------------+--------------+---------------+
 
@@ -480,12 +496,12 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 ; AA12     ;            ; --       ; VCC_AUX                         ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
 ; AA13     ; 132        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; AA14     ;            ; 4A       ; VREFB4AN0                       ; power  ;              ;                     ; --           ;                 ; --       ; --           ;
-; AA15     ; 156        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
+; AA15     ; 156        ; 4A       ; num0[1]                         ; input  ; 2.5 V        ;                     ; Column I/O   ; N               ; no       ; Off          ;
 ; AA16     ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
 ; AA17     ; 169        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; AA18     ; 147        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; AA19     ; 148        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
-; AA20     ; 153        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
+; AA20     ; 153        ; 4A       ; result[3]                       ; output ; 2.5 V        ;                     ; Column I/O   ; N               ; no       ; Off          ;
 ; AA21     ;            ; 4A       ; VCCIO4A                         ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
 ; AA22     ; 166        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; AB1      ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
@@ -504,7 +520,7 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 ; AB14     ;            ; 4A       ; VCCIO4A                         ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
 ; AB15     ; 140        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; AB16     ; 142        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
-; AB17     ; 171        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
+; AB17     ; 171        ; 4A       ; num1[0]                         ; input  ; 2.5 V        ;                     ; Column I/O   ; N               ; no       ; Off          ;
 ; AB18     ; 145        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; AB19     ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
 ; AB20     ; 161        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
@@ -524,7 +540,7 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 ; B12      ; 450        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; B13      ; 448        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; B14      ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
-; B15      ; 428        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
+; B15      ; 428        ; 7A       ; sel0                            ; input  ; 2.5 V        ;                     ; Column I/O   ; N               ; no       ; Off          ;
 ; B16      ; 426        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; B17      ; 436        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; B18      ; 434        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
@@ -549,7 +565,7 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 ; C15      ; 427        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; C16      ; 425        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; C17      ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
-; C18      ; 424        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
+; C18      ; 424        ; 7A       ; result[6]                       ; output ; 2.5 V        ;                     ; Column I/O   ; N               ; no       ; Off          ;
 ; C19      ; 422        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; C20      ; 408        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; C21      ; 406        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
@@ -571,7 +587,7 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 ; D15      ;            ; 7A       ; VCCIO7A                         ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
 ; D16      ;            ; 7A       ; VREFB7AN0                       ; power  ;              ;                     ; --           ;                 ; --       ; --           ;
 ; D17      ; 419        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
-; D18      ; 409        ; 7A       ; result[7]                       ; output ; 2.5 V        ;                     ; Column I/O   ; N               ; no       ; Off          ;
+; D18      ; 409        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; D19      ;            ; --       ; VCC_AUX                         ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
 ; D20      ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
 ; D21      ;            ;          ; DNU                             ;        ;              ;                     ; --           ;                 ; --       ; --           ;
@@ -591,11 +607,11 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 ; E13      ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
 ; E14      ; 435        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; E15      ;            ; --       ; VCCPD7A8A                       ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
-; E16      ; 417        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
+; E16      ; 417        ; 7A       ; result[2]                       ; output ; 2.5 V        ;                     ; Column I/O   ; N               ; no       ; Off          ;
 ; E17      ; 411        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; E18      ;            ; 7A       ; VCCIO7A                         ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
 ; E19      ;            ; --       ; VCCA_FPLL                       ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
-; E20      ; 277        ; 5B       ; num1[1]                         ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; E20      ; 277        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
 ; E21      ; 261        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
 ; E22      ; 259        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
 ; F1       ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
@@ -615,9 +631,9 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 ; F15      ; 433        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; F16      ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
 ; F17      ; 372        ; 7A       ; ^GND                            ;        ;              ;                     ; --           ;                 ; --       ; --           ;
-; F18      ; 287        ; 5B       ; num0[2]                         ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
-; F19      ; 285        ; 5B       ; num0[3]                         ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
-; F20      ; 279        ; 5B       ; result[3]                       ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; F18      ; 287        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
+; F19      ; 285        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
+; F20      ; 279        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
 ; F21      ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
 ; F22      ; 257        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
 ; G1       ; 23         ; B1L      ; GND                             ;        ;              ;                     ; --           ;                 ; --       ; --           ;
@@ -636,12 +652,12 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 ; G14      ; 415        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; G15      ; 413        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; G16      ; 407        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
-; G17      ; 283        ; 5B       ; num0[0]                         ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
-; G18      ; 281        ; 5B       ; result[6]                       ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; G17      ; 283        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
+; G18      ; 281        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
 ; G19      ;            ; 5B       ; VCCIO5B                         ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
-; G20      ; 273        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
-; G21      ; 271        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
-; G22      ; 269        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
+; G20      ; 273        ; 5B       ; result[5]                       ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; G21      ; 271        ; 5B       ; result[0]                       ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; G22      ; 269        ; 5B       ; num1[3]                         ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
 ; H1       ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
 ; H2       ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
 ; H3       ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
@@ -659,10 +675,10 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 ; H15      ;            ; --       ; VCC                             ; power  ;              ; 1.1V                ; --           ;                 ; --       ; --           ;
 ; H16      ; 405        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; H17      ;            ; 7A       ; VCCIO7A                         ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
-; H18      ; 291        ; 5B       ; num0[1]                         ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
-; H19      ; 282        ; 5B       ; num1[2]                         ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
-; H20      ; 280        ; 5B       ; num1[3]                         ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
-; H21      ; 275        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
+; H18      ; 291        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
+; H19      ; 282        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
+; H20      ; 280        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
+; H21      ; 275        ; 5B       ; num1[1]                         ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
 ; H22      ;            ; 5B       ; VCCIO5B                         ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
 ; J1       ; 24         ; B1L      ; GXB_NC                          ;        ;              ;                     ; --           ;                 ; --       ; --           ;
 ; J2       ; 25         ; B1L      ; GXB_NC                          ;        ;              ;                     ; --           ;                 ; --       ; --           ;
@@ -679,10 +695,10 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 ; J13      ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
 ; J14      ;            ; --       ; VCC                             ; power  ;              ; 1.1V                ; --           ;                 ; --       ; --           ;
 ; J15      ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
-; J16      ; 286        ; 5B       ; sel0                            ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
-; J17      ; 288        ; 5B       ; result[5]                       ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
-; J18      ; 290        ; 5B       ; num1[0]                         ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
-; J19      ; 289        ; 5B       ; result[2]                       ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; J16      ; 286        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
+; J17      ; 288        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
+; J18      ; 290        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
+; J19      ; 289        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
 ; J20      ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
 ; J21      ; 267        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
 ; J22      ; 255        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
@@ -700,11 +716,11 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 ; K12      ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
 ; K13      ;            ; --       ; VCC                             ; power  ;              ; 1.1V                ; --           ;                 ; --       ; --           ;
 ; K14      ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
-; K15      ; 270        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
-; K16      ; 284        ; 5B       ; sel1                            ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
-; K17      ; 278        ; 5B       ; result[0]                       ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; K15      ; 270        ; 5B       ; result[7]                       ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; K16      ; 284        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
+; K17      ; 278        ; 5B       ; g_clk                           ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
 ; K18      ;            ; 5B       ; VCCIO5B                         ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
-; K19      ; 274        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
+; K19      ; 274        ; 5B       ; result[4]                       ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
 ; K20      ;            ; 5B       ; VREFB5BN0                       ; power  ;              ;                     ; --           ;                 ; --       ; --           ;
 ; K21      ; 265        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
 ; K22      ; 253        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
@@ -722,12 +738,12 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 ; L12      ;            ; --       ; VCC                             ; power  ;              ; 1.1V                ; --           ;                 ; --       ; --           ;
 ; L13      ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
 ; L14      ;            ; --       ; VCC                             ; power  ;              ; 1.1V                ; --           ;                 ; --       ; --           ;
-; L15      ; 268        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
+; L15      ; 268        ; 5B       ; num0[2]                         ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
 ; L16      ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
-; L17      ; 276        ; 5B       ; result[4]                       ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
-; L18      ; 272        ; 5B       ; result[1]                       ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
-; L19      ; 264        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
-; L20      ; 266        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
+; L17      ; 276        ; 5B       ; sel1                            ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; L18      ; 272        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
+; L19      ; 264        ; 5B       ; result[1]                       ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; L20      ; 266        ; 5B       ; num0[0]                         ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
 ; L21      ;            ; 5B       ; VCCIO5B                         ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
 ; L22      ; 251        ; 5B       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
 ; M1       ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
@@ -854,7 +870,7 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 ; U12      ; 136        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; U13      ; 146        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; U14      ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
-; U15      ; 157        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
+; U15      ; 157        ; 4A       ; num1[2]                         ; input  ; 2.5 V        ;                     ; Column I/O   ; N               ; no       ; Off          ;
 ; U16      ; 168        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; U17      ; 170        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; U18      ;            ; --       ; VCCA_FPLL                       ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
@@ -876,7 +892,7 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 ; V12      ;            ; 4A       ; VCCIO4A                         ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
 ; V13      ; 143        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; V14      ;            ; --       ; VCCPD3B4A                       ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
-; V15      ; 159        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
+; V15      ; 159        ; 4A       ; globalRes                       ; input  ; 2.5 V        ;                     ; Column I/O   ; N               ; no       ; Off          ;
 ; V16      ;            ; --       ; VCCPD3B4A                       ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
 ; V17      ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
 ; V18      ; 173        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
@@ -925,7 +941,7 @@ The pin-out file can be found in C:/Users/grobb/Documents/University/Digital_Sys
 ; Y17      ; 167        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; Y18      ;            ; 4A       ; VCCIO4A                         ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
 ; Y19      ; 150        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
-; Y20      ; 155        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
+; Y20      ; 155        ; 4A       ; num0[3]                         ; input  ; 2.5 V        ;                     ; Column I/O   ; N               ; no       ; Off          ;
 ; Y21      ; 174        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; Y22      ; 172        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 +----------+------------+----------+---------------------------------+--------+--------------+---------------------+--------------+-----------------+----------+--------------+
@@ -937,7 +953,7 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 +----------------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+----------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node       ; ALMs needed [=A-B+C] ; [A] ALMs used in final placement ; [B] Estimate of ALMs recoverable by dense packing ; [C] Estimate of ALMs unavailable ; ALMs used for memory ; Combinational ALUTs ; Dedicated Logic Registers ; I/O Registers ; Block Memory Bits ; M10Ks ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                        ; Library Name ;
 +----------------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+----------------------------------------------------------------------------+--------------+
-; |datapath                        ; 46.5 (0.5)           ; 46.5 (0.5)                       ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 70 (1)              ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 18   ; 0            ; |datapath                                                                  ; work         ;
+; |datapath                        ; 46.5 (0.5)           ; 47.0 (0.5)                       ; 0.5 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 70 (1)              ; 8 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 20   ; 0            ; |datapath                                                                  ; work         ;
 ;    |divider4bit:myDiv|           ; 16.0 (4.5)           ; 16.0 (4.5)                       ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 25 (6)              ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|divider4bit:myDiv                                                ; work         ;
 ;       |fullSubtractor:FS0|       ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|divider4bit:myDiv|fullSubtractor:FS0                             ; work         ;
 ;       |fullSubtractor:FS1|       ; 1.0 (1.0)            ; 1.0 (1.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|divider4bit:myDiv|fullSubtractor:FS1                             ; work         ;
@@ -949,21 +965,30 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 ;          |h2InMux4bit:mux|       ; 1.0 (1.0)            ; 1.0 (1.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|divider4bit:myDiv|twoComp:input1|h2InMux4bit:mux                 ; work         ;
 ;       |twoComp:input2|           ; 1.5 (0.0)            ; 1.5 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 3 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|divider4bit:myDiv|twoComp:input2                                 ; work         ;
 ;          |h2InMux4bit:mux|       ; 1.5 (1.5)            ; 1.5 (1.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 3 (3)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|divider4bit:myDiv|twoComp:input2|h2InMux4bit:mux                 ; work         ;
-;    |fourMux:outputMux|           ; 13.0 (0.0)           ; 13.0 (0.0)                       ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 18 (0)              ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|fourMux:outputMux                                                ; work         ;
-;       |h2InMux:twoIN2|           ; 13.0 (13.0)          ; 13.0 (13.0)                      ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 18 (18)             ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|fourMux:outputMux|h2InMux:twoIN2                                 ; work         ;
-;    |fourbitaddsub:addSub|        ; 1.0 (0.0)            ; 1.0 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|fourbitaddsub:addSub                                             ; work         ;
-;       |oneBitAdder:bit1|         ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|fourbitaddsub:addSub|oneBitAdder:bit1                            ; work         ;
+;    |eightBitLeftShift:Display|   ; 2.7 (0.0)            ; 2.7 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 0 (0)               ; 8 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display                                        ; work         ;
+;       |enARdFF_2:bit0|           ; 0.3 (0.3)            ; 0.3 (0.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 0 (0)               ; 1 (1)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit0                         ; work         ;
+;       |enARdFF_2:bit1|           ; 0.3 (0.3)            ; 0.3 (0.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 0 (0)               ; 1 (1)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit1                         ; work         ;
+;       |enARdFF_2:bit2|           ; 0.3 (0.3)            ; 0.3 (0.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 0 (0)               ; 1 (1)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit2                         ; work         ;
+;       |enARdFF_2:bit3|           ; 0.3 (0.3)            ; 0.3 (0.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 0 (0)               ; 1 (1)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit3                         ; work         ;
+;       |enARdFF_2:bit4|           ; 0.3 (0.3)            ; 0.3 (0.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 0 (0)               ; 1 (1)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit4                         ; work         ;
+;       |enARdFF_2:bit5|           ; 0.3 (0.3)            ; 0.3 (0.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 0 (0)               ; 1 (1)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit5                         ; work         ;
+;       |enARdFF_2:bit6|           ; 0.3 (0.3)            ; 0.3 (0.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 0 (0)               ; 1 (1)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit6                         ; work         ;
+;       |enARdFF_2:bit7|           ; 0.3 (0.3)            ; 0.3 (0.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 0 (0)               ; 1 (1)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit7                         ; work         ;
+;    |fourMux:outputMux|           ; 10.0 (0.0)           ; 10.0 (0.0)                       ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 18 (0)              ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|fourMux:outputMux                                                ; work         ;
+;       |h2InMux:twoIN2|           ; 10.0 (10.0)          ; 10.0 (10.0)                      ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 18 (18)             ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|fourMux:outputMux|h2InMux:twoIN2                                 ; work         ;
+;    |fourbitaddsub:addSub|        ; 1.5 (0.0)            ; 1.5 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|fourbitaddsub:addSub                                             ; work         ;
+;       |oneBitAdder:bit1|         ; 1.0 (1.0)            ; 1.0 (1.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|fourbitaddsub:addSub|oneBitAdder:bit1                            ; work         ;
 ;       |oneBitAdder:bit2|         ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|fourbitaddsub:addSub|oneBitAdder:bit2                            ; work         ;
-;    |multiplier4bit:myMulti|      ; 16.0 (4.0)           ; 16.0 (4.0)                       ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 24 (8)              ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti                                           ; work         ;
-;       |eightBitAdder:eightAdder| ; 3.5 (0.0)            ; 3.5 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 5 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder                  ; work         ;
+;    |multiplier4bit:myMulti|      ; 15.8 (4.0)           ; 16.3 (4.5)                       ; 0.5 (0.5)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 24 (8)              ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti                                           ; work         ;
+;       |eightBitAdder:eightAdder| ; 3.3 (0.0)            ; 3.8 (0.0)                        ; 0.5 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 5 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder                  ; work         ;
 ;          |oneBitAdder:bit1|      ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit1 ; work         ;
 ;          |oneBitAdder:bit2|      ; 1.0 (1.0)            ; 1.0 (1.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit2 ; work         ;
-;          |oneBitAdder:bit3|      ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit3 ; work         ;
-;          |oneBitAdder:bit4|      ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit4 ; work         ;
+;          |oneBitAdder:bit3|      ; 0.5 (0.5)            ; 1.0 (1.0)                        ; 0.5 (0.5)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit3 ; work         ;
+;          |oneBitAdder:bit4|      ; 0.3 (0.3)            ; 0.3 (0.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit4 ; work         ;
 ;          |oneBitAdder:bit5|      ; 1.0 (1.0)            ; 1.0 (1.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit5 ; work         ;
 ;       |halfAdder:HA2|            ; 1.0 (1.0)            ; 1.0 (1.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|halfAdder:HA2                             ; work         ;
 ;       |halfAdder:HA3|            ; 2.0 (2.0)            ; 2.0 (2.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|halfAdder:HA3                             ; work         ;
-;       |halfAdder:HA4|            ; 1.0 (1.0)            ; 1.0 (1.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|halfAdder:HA4                             ; work         ;
+;       |halfAdder:HA4|            ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|halfAdder:HA4                             ; work         ;
 ;       |oneBitAdder:FA2|          ; 1.0 (1.0)            ; 1.0 (1.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|oneBitAdder:FA2                           ; work         ;
 ;       |oneBitAdder:FA4|          ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|oneBitAdder:FA4                           ; work         ;
 ;       |oneBitAdder:FA5|          ; 1.0 (1.0)            ; 1.0 (1.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|oneBitAdder:FA5                           ; work         ;
@@ -987,16 +1012,18 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; result[5] ; Output   ; -- ; --   ; --   ; -- ; (0)  ; (31)  ; --     ; --                     ; --                       ;
 ; result[6] ; Output   ; -- ; --   ; --   ; -- ; (0)  ; (31)  ; --     ; --                     ; --                       ;
 ; result[7] ; Output   ; -- ; --   ; --   ; -- ; (0)  ; (31)  ; --     ; --                     ; --                       ;
-; sel1      ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
-; num0[0]   ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
-; num1[0]   ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; sel1      ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; num0[0]   ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; num1[0]   ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; sel0      ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
-; num1[2]   ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
-; num1[3]   ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; num1[2]   ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; num1[3]   ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; num1[1]   ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; num0[3]   ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
-; num0[1]   ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; num0[1]   ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; num0[2]   ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; g_clk     ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; globalRes ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 +-----------+----------+----+------+------+----+------+-------+--------+------------------------+--------------------------+
 
 
@@ -1006,55 +1033,27 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Source Pin / Fanout                                                                   ; Pad To Core Index ; Setting ;
 +---------------------------------------------------------------------------------------+-------------------+---------+
 ; sel1                                                                                  ;                   ;         ;
-;      - fourMux:outputMux|h2InMux:twoIN2|y[2]~15                                       ; 0                 ; 0       ;
-;      - fourMux:outputMux|h2InMux:twoIN2|y[1]~19                                       ; 0                 ; 0       ;
-;      - fourMux:outputMux|h2InMux:twoIN2|y[0]~0                                        ; 0                 ; 0       ;
-;      - fourMux:outputMux|h2InMux:twoIN2|y[1]~1                                        ; 0                 ; 0       ;
-;      - fourMux:outputMux|h2InMux:twoIN2|y[1]~2                                        ; 0                 ; 0       ;
-;      - fourMux:outputMux|h2InMux:twoIN2|y[0]~3                                        ; 0                 ; 0       ;
-;      - fourMux:outputMux|h2InMux:twoIN2|y[3]~6                                        ; 0                 ; 0       ;
-;      - fourMux:outputMux|h2InMux:twoIN2|y[3]~8                                        ; 0                 ; 0       ;
-;      - fourMux:outputMux|h2InMux:twoIN2|y[4]~9                                        ; 0                 ; 0       ;
-; num0[0]                                                                               ;                   ;         ;
+;      - fourMux:outputMux|h2InMux:twoIN2|y[2]~15                                       ; 1                 ; 0       ;
 ;      - fourMux:outputMux|h2InMux:twoIN2|y[1]~19                                       ; 1                 ; 0       ;
-;      - divider4bit:myDiv|fullSubtractor:FS2|Bout~0                                    ; 1                 ; 0       ;
-;      - divider4bit:myDiv|twoComp:input1|h2InMux4bit:mux|y[2]~0                        ; 1                 ; 0       ;
-;      - divider4bit:myDiv|fullSubtractor:FS1|Bout~0                                    ; 1                 ; 0       ;
-;      - divider4bit:myDiv|twoComp:input1|h2InMux4bit:mux|y[1]~1                        ; 1                 ; 0       ;
-;      - divider4bit:myDiv|fullSubtractor:FS7|Bout~0                                    ; 1                 ; 0       ;
-;      - divider4bit:myDiv|fullSubtractor:FS7|Bout~2                                    ; 1                 ; 0       ;
-;      - divider4bit:myDiv|fullSubtractor:FS7|Bout~3                                    ; 1                 ; 0       ;
-;      - divider4bit:myDiv|fullSubtractor:FS7|Bout~5                                    ; 1                 ; 0       ;
-;      - divider4bit:myDiv|fullSubtractor:FS7|Bout~6                                    ; 1                 ; 0       ;
 ;      - fourMux:outputMux|h2InMux:twoIN2|y[0]~0                                        ; 1                 ; 0       ;
-;      - multiplier4bit:myMulti|halfAdder:HA3|sum                                       ; 1                 ; 0       ;
-;      - multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit1|int_CarryOut3 ; 1                 ; 0       ;
-;      - fourbitaddsub:addSub|oneBitAdder:bit1|o_CarryOut                               ; 1                 ; 0       ;
-;      - multiplier4bit:myMulti|AB3[0]                                                  ; 1                 ; 0       ;
-;      - multiplier4bit:myMulti|oneBitAdder:FA2|o_Sum                                   ; 1                 ; 0       ;
-;      - multiplier4bit:myMulti|halfAdder:HA3|carryout                                  ; 1                 ; 0       ;
-;      - multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit2|int_CarryOut3 ; 1                 ; 0       ;
-;      - multiplier4bit:myMulti|halfAdder:HA2|sum~0                                     ; 1                 ; 0       ;
-;      - fourMux:outputMux|h2InMux:twoIN2|y[1]~23                                       ; 1                 ; 0       ;
-; num1[0]                                                                               ;                   ;         ;
+;      - fourMux:outputMux|h2InMux:twoIN2|y[1]~1                                        ; 1                 ; 0       ;
+;      - fourMux:outputMux|h2InMux:twoIN2|y[1]~2                                        ; 1                 ; 0       ;
+;      - fourMux:outputMux|h2InMux:twoIN2|y[0]~3                                        ; 1                 ; 0       ;
+;      - fourMux:outputMux|h2InMux:twoIN2|y[3]~6                                        ; 1                 ; 0       ;
+;      - fourMux:outputMux|h2InMux:twoIN2|y[3]~8                                        ; 1                 ; 0       ;
+;      - fourMux:outputMux|h2InMux:twoIN2|y[4]~9                                        ; 1                 ; 0       ;
+; num0[0]                                                                               ;                   ;         ;
 ;      - fourMux:outputMux|h2InMux:twoIN2|y[1]~19                                       ; 0                 ; 0       ;
-;      - divider4bit:myDiv|twoComp:input2|h2InMux4bit:mux|y~0                           ; 0                 ; 0       ;
-;      - divider4bit:myDiv|twoComp:input2|h2InMux4bit:mux|y[1]~1                        ; 0                 ; 0       ;
-;      - divider4bit:myDiv|twoComp:input2|h2InMux4bit:mux|y[2]~2                        ; 0                 ; 0       ;
 ;      - divider4bit:myDiv|fullSubtractor:FS2|Bout~0                                    ; 0                 ; 0       ;
-;      - divider4bit:myDiv|ORout[0]~0                                                   ; 0                 ; 0       ;
-;      - divider4bit:myDiv|fullSubtractor:FS0|D~0                                       ; 0                 ; 0       ;
-;      - divider4bit:myDiv|fullSubtractor:FS1|D~0                                       ; 0                 ; 0       ;
-;      - divider4bit:myDiv|fullSubtractor:FS3|Bout~0                                    ; 0                 ; 0       ;
+;      - divider4bit:myDiv|twoComp:input1|h2InMux4bit:mux|y[2]~0                        ; 0                 ; 0       ;
+;      - divider4bit:myDiv|fullSubtractor:FS1|Bout~0                                    ; 0                 ; 0       ;
+;      - divider4bit:myDiv|twoComp:input1|h2InMux4bit:mux|y[1]~1                        ; 0                 ; 0       ;
 ;      - divider4bit:myDiv|fullSubtractor:FS7|Bout~0                                    ; 0                 ; 0       ;
+;      - divider4bit:myDiv|fullSubtractor:FS7|Bout~2                                    ; 0                 ; 0       ;
 ;      - divider4bit:myDiv|fullSubtractor:FS7|Bout~3                                    ; 0                 ; 0       ;
-;      - divider4bit:myDiv|fullSubtractor:FS7|Bout~4                                    ; 0                 ; 0       ;
 ;      - divider4bit:myDiv|fullSubtractor:FS7|Bout~5                                    ; 0                 ; 0       ;
 ;      - divider4bit:myDiv|fullSubtractor:FS7|Bout~6                                    ; 0                 ; 0       ;
-;      - divider4bit:myDiv|ANDout[5]~0                                                  ; 0                 ; 0       ;
 ;      - fourMux:outputMux|h2InMux:twoIN2|y[0]~0                                        ; 0                 ; 0       ;
-;      - divider4bit:myDiv|ANDout[4]~2                                                  ; 0                 ; 0       ;
-;      - divider4bit:myDiv|ANDout[3]                                                    ; 0                 ; 0       ;
 ;      - multiplier4bit:myMulti|halfAdder:HA3|sum                                       ; 0                 ; 0       ;
 ;      - multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit1|int_CarryOut3 ; 0                 ; 0       ;
 ;      - fourbitaddsub:addSub|oneBitAdder:bit1|o_CarryOut                               ; 0                 ; 0       ;
@@ -1064,6 +1063,34 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ;      - multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit2|int_CarryOut3 ; 0                 ; 0       ;
 ;      - multiplier4bit:myMulti|halfAdder:HA2|sum~0                                     ; 0                 ; 0       ;
 ;      - fourMux:outputMux|h2InMux:twoIN2|y[1]~23                                       ; 0                 ; 0       ;
+; num1[0]                                                                               ;                   ;         ;
+;      - fourMux:outputMux|h2InMux:twoIN2|y[1]~19                                       ; 1                 ; 0       ;
+;      - divider4bit:myDiv|twoComp:input2|h2InMux4bit:mux|y~0                           ; 1                 ; 0       ;
+;      - divider4bit:myDiv|twoComp:input2|h2InMux4bit:mux|y[1]~1                        ; 1                 ; 0       ;
+;      - divider4bit:myDiv|twoComp:input2|h2InMux4bit:mux|y[2]~2                        ; 1                 ; 0       ;
+;      - divider4bit:myDiv|fullSubtractor:FS2|Bout~0                                    ; 1                 ; 0       ;
+;      - divider4bit:myDiv|ORout[0]~0                                                   ; 1                 ; 0       ;
+;      - divider4bit:myDiv|fullSubtractor:FS0|D~0                                       ; 1                 ; 0       ;
+;      - divider4bit:myDiv|fullSubtractor:FS1|D~0                                       ; 1                 ; 0       ;
+;      - divider4bit:myDiv|fullSubtractor:FS3|Bout~0                                    ; 1                 ; 0       ;
+;      - divider4bit:myDiv|fullSubtractor:FS7|Bout~0                                    ; 1                 ; 0       ;
+;      - divider4bit:myDiv|fullSubtractor:FS7|Bout~3                                    ; 1                 ; 0       ;
+;      - divider4bit:myDiv|fullSubtractor:FS7|Bout~4                                    ; 1                 ; 0       ;
+;      - divider4bit:myDiv|fullSubtractor:FS7|Bout~5                                    ; 1                 ; 0       ;
+;      - divider4bit:myDiv|fullSubtractor:FS7|Bout~6                                    ; 1                 ; 0       ;
+;      - divider4bit:myDiv|ANDout[5]~0                                                  ; 1                 ; 0       ;
+;      - fourMux:outputMux|h2InMux:twoIN2|y[0]~0                                        ; 1                 ; 0       ;
+;      - divider4bit:myDiv|ANDout[4]~2                                                  ; 1                 ; 0       ;
+;      - divider4bit:myDiv|ANDout[3]                                                    ; 1                 ; 0       ;
+;      - multiplier4bit:myMulti|halfAdder:HA3|sum                                       ; 1                 ; 0       ;
+;      - multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit1|int_CarryOut3 ; 1                 ; 0       ;
+;      - fourbitaddsub:addSub|oneBitAdder:bit1|o_CarryOut                               ; 1                 ; 0       ;
+;      - multiplier4bit:myMulti|AB3[0]                                                  ; 1                 ; 0       ;
+;      - multiplier4bit:myMulti|oneBitAdder:FA2|o_Sum                                   ; 1                 ; 0       ;
+;      - multiplier4bit:myMulti|halfAdder:HA3|carryout                                  ; 1                 ; 0       ;
+;      - multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit2|int_CarryOut3 ; 1                 ; 0       ;
+;      - multiplier4bit:myMulti|halfAdder:HA2|sum~0                                     ; 1                 ; 0       ;
+;      - fourMux:outputMux|h2InMux:twoIN2|y[1]~23                                       ; 1                 ; 0       ;
 ; sel0                                                                                  ;                   ;         ;
 ;      - fourMux:outputMux|h2InMux:twoIN2|y[2]~15                                       ; 1                 ; 0       ;
 ;      - fourMux:outputMux|h2InMux:twoIN2|y[1]~19                                       ; 1                 ; 0       ;
@@ -1077,28 +1104,28 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ;      - fourMux:outputMux|h2InMux:twoIN2|y[3]~8                                        ; 1                 ; 0       ;
 ;      - fourMux:outputMux|h2InMux:twoIN2|y[4]~9                                        ; 1                 ; 0       ;
 ; num1[2]                                                                               ;                   ;         ;
-;      - fourMux:outputMux|h2InMux:twoIN2|y[2]~15                                       ; 0                 ; 0       ;
-;      - divider4bit:myDiv|twoComp:input2|h2InMux4bit:mux|y~0                           ; 0                 ; 0       ;
-;      - divider4bit:myDiv|twoComp:input2|h2InMux4bit:mux|y[2]~2                        ; 0                 ; 0       ;
-;      - divider4bit:myDiv|ORout[0]~0                                                   ; 0                 ; 0       ;
-;      - divider4bit:myDiv|ANDout[5]~0                                                  ; 0                 ; 0       ;
-;      - divider4bit:myDiv|ANDout[4]~2                                                  ; 0                 ; 0       ;
-;      - divider4bit:myDiv|ANDout[3]                                                    ; 0                 ; 0       ;
-;      - multiplier4bit:myMulti|AB3[0]                                                  ; 0                 ; 0       ;
-;      - fourbitaddsub:addSub|oneBitAdder:bit2|o_CarryOut                               ; 0                 ; 0       ;
+;      - fourMux:outputMux|h2InMux:twoIN2|y[2]~15                                       ; 1                 ; 0       ;
+;      - divider4bit:myDiv|twoComp:input2|h2InMux4bit:mux|y~0                           ; 1                 ; 0       ;
+;      - divider4bit:myDiv|twoComp:input2|h2InMux4bit:mux|y[2]~2                        ; 1                 ; 0       ;
+;      - divider4bit:myDiv|ORout[0]~0                                                   ; 1                 ; 0       ;
+;      - divider4bit:myDiv|ANDout[5]~0                                                  ; 1                 ; 0       ;
+;      - divider4bit:myDiv|ANDout[4]~2                                                  ; 1                 ; 0       ;
+;      - divider4bit:myDiv|ANDout[3]                                                    ; 1                 ; 0       ;
+;      - multiplier4bit:myMulti|AB3[0]                                                  ; 1                 ; 0       ;
+;      - fourbitaddsub:addSub|oneBitAdder:bit2|o_CarryOut                               ; 1                 ; 0       ;
 ; num1[3]                                                                               ;                   ;         ;
-;      - divider4bit:myDiv|twoComp:input2|h2InMux4bit:mux|y~0                           ; 0                 ; 0       ;
-;      - divider4bit:myDiv|twoComp:input2|h2InMux4bit:mux|y[1]~1                        ; 0                 ; 0       ;
-;      - divider4bit:myDiv|twoComp:input2|h2InMux4bit:mux|y[2]~2                        ; 0                 ; 0       ;
-;      - divider4bit:myDiv|ORout[0]~0                                                   ; 0                 ; 0       ;
-;      - divider4bit:myDiv|fullSubtractor:FS7|Bout~3                                    ; 0                 ; 0       ;
-;      - divider4bit:myDiv|ANDout[5]~0                                                  ; 0                 ; 0       ;
-;      - divider4bit:myDiv|ANDout[4]~2                                                  ; 0                 ; 0       ;
-;      - multiplier4bit:myMulti|convertBack                                             ; 0                 ; 0       ;
-;      - divider4bit:myDiv|ANDout[3]                                                    ; 0                 ; 0       ;
-;      - multiplier4bit:myMulti|AB3[0]                                                  ; 0                 ; 0       ;
-;      - fourMux:outputMux|h2InMux:twoIN2|y[3]~6                                        ; 0                 ; 0       ;
-;      - fourMux:outputMux|h2InMux:twoIN2|y[4]~9                                        ; 0                 ; 0       ;
+;      - divider4bit:myDiv|twoComp:input2|h2InMux4bit:mux|y~0                           ; 1                 ; 0       ;
+;      - divider4bit:myDiv|twoComp:input2|h2InMux4bit:mux|y[1]~1                        ; 1                 ; 0       ;
+;      - divider4bit:myDiv|twoComp:input2|h2InMux4bit:mux|y[2]~2                        ; 1                 ; 0       ;
+;      - divider4bit:myDiv|ORout[0]~0                                                   ; 1                 ; 0       ;
+;      - divider4bit:myDiv|fullSubtractor:FS7|Bout~3                                    ; 1                 ; 0       ;
+;      - divider4bit:myDiv|ANDout[5]~0                                                  ; 1                 ; 0       ;
+;      - divider4bit:myDiv|ANDout[4]~2                                                  ; 1                 ; 0       ;
+;      - multiplier4bit:myMulti|convertBack                                             ; 1                 ; 0       ;
+;      - divider4bit:myDiv|ANDout[3]                                                    ; 1                 ; 0       ;
+;      - multiplier4bit:myMulti|AB3[0]                                                  ; 1                 ; 0       ;
+;      - fourMux:outputMux|h2InMux:twoIN2|y[3]~6                                        ; 1                 ; 0       ;
+;      - fourMux:outputMux|h2InMux:twoIN2|y[4]~9                                        ; 1                 ; 0       ;
 ; num1[1]                                                                               ;                   ;         ;
 ;      - fourMux:outputMux|h2InMux:twoIN2|y[1]~19                                       ; 1                 ; 0       ;
 ;      - divider4bit:myDiv|twoComp:input2|h2InMux4bit:mux|y~0                           ; 1                 ; 0       ;
@@ -1124,16 +1151,16 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ;      - fourMux:outputMux|h2InMux:twoIN2|y[4]~9                                        ; 1                 ; 0       ;
 ;      - multiplier4bit:myMulti|halfAdder:HA2|sum~0                                     ; 1                 ; 0       ;
 ; num0[1]                                                                               ;                   ;         ;
-;      - divider4bit:myDiv|fullSubtractor:FS2|Bout~0                                    ; 1                 ; 0       ;
-;      - divider4bit:myDiv|twoComp:input1|h2InMux4bit:mux|y[2]~0                        ; 1                 ; 0       ;
-;      - divider4bit:myDiv|fullSubtractor:FS1|Bout~0                                    ; 1                 ; 0       ;
-;      - divider4bit:myDiv|twoComp:input1|h2InMux4bit:mux|y[1]~1                        ; 1                 ; 0       ;
-;      - divider4bit:myDiv|fullSubtractor:FS7|Bout~0                                    ; 1                 ; 0       ;
-;      - fourbitaddsub:addSub|oneBitAdder:bit1|o_CarryOut                               ; 1                 ; 0       ;
-;      - multiplier4bit:myMulti|oneBitAdder:FA2|o_Sum                                   ; 1                 ; 0       ;
-;      - multiplier4bit:myMulti|halfAdder:HA2|sum~0                                     ; 1                 ; 0       ;
-;      - fourMux:outputMux|h2InMux:twoIN2|y[1]~23                                       ; 1                 ; 0       ;
-;      - fourMux:outputMux|h2InMux:twoIN2|y[1]~19                                       ; 1                 ; 0       ;
+;      - divider4bit:myDiv|fullSubtractor:FS2|Bout~0                                    ; 0                 ; 0       ;
+;      - divider4bit:myDiv|twoComp:input1|h2InMux4bit:mux|y[2]~0                        ; 0                 ; 0       ;
+;      - divider4bit:myDiv|fullSubtractor:FS1|Bout~0                                    ; 0                 ; 0       ;
+;      - divider4bit:myDiv|twoComp:input1|h2InMux4bit:mux|y[1]~1                        ; 0                 ; 0       ;
+;      - divider4bit:myDiv|fullSubtractor:FS7|Bout~0                                    ; 0                 ; 0       ;
+;      - fourbitaddsub:addSub|oneBitAdder:bit1|o_CarryOut                               ; 0                 ; 0       ;
+;      - multiplier4bit:myMulti|oneBitAdder:FA2|o_Sum                                   ; 0                 ; 0       ;
+;      - multiplier4bit:myMulti|halfAdder:HA2|sum~0                                     ; 0                 ; 0       ;
+;      - fourMux:outputMux|h2InMux:twoIN2|y[1]~23                                       ; 0                 ; 0       ;
+;      - fourMux:outputMux|h2InMux:twoIN2|y[1]~19                                       ; 0                 ; 0       ;
 ; num0[2]                                                                               ;                   ;         ;
 ;      - fourMux:outputMux|h2InMux:twoIN2|y[2]~15                                       ; 1                 ; 0       ;
 ;      - divider4bit:myDiv|twoComp:input1|h2InMux4bit:mux|y[2]~0                        ; 1                 ; 0       ;
@@ -1141,7 +1168,36 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ;      - multiplier4bit:myMulti|oneBitAdder:FA2|o_Sum                                   ; 1                 ; 0       ;
 ;      - fourbitaddsub:addSub|oneBitAdder:bit2|o_CarryOut                               ; 1                 ; 0       ;
 ;      - multiplier4bit:myMulti|halfAdder:HA2|sum~0                                     ; 1                 ; 0       ;
+; g_clk                                                                                 ;                   ;         ;
+; globalRes                                                                             ;                   ;         ;
+;      - eightBitLeftShift:Display|enARdFF_2:bit0|int_q                                 ; 1                 ; 0       ;
+;      - eightBitLeftShift:Display|enARdFF_2:bit1|int_q                                 ; 1                 ; 0       ;
+;      - eightBitLeftShift:Display|enARdFF_2:bit2|int_q                                 ; 1                 ; 0       ;
+;      - eightBitLeftShift:Display|enARdFF_2:bit3|int_q                                 ; 1                 ; 0       ;
+;      - eightBitLeftShift:Display|enARdFF_2:bit4|int_q                                 ; 1                 ; 0       ;
+;      - eightBitLeftShift:Display|enARdFF_2:bit5|int_q                                 ; 1                 ; 0       ;
+;      - eightBitLeftShift:Display|enARdFF_2:bit6|int_q                                 ; 1                 ; 0       ;
+;      - eightBitLeftShift:Display|enARdFF_2:bit7|int_q                                 ; 1                 ; 0       ;
 +---------------------------------------------------------------------------------------+-------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------+
+; Control Signals                                                                                                              ;
++-----------+----------+---------+--------------+--------+----------------------+------------------+---------------------------+
+; Name      ; Location ; Fan-Out ; Usage        ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
++-----------+----------+---------+--------------+--------+----------------------+------------------+---------------------------+
+; g_clk     ; PIN_K17  ; 8       ; Clock        ; yes    ; Global Clock         ; GCLK10           ; --                        ;
+; globalRes ; PIN_V15  ; 8       ; Async. clear ; no     ; --                   ; --               ; --                        ;
++-----------+----------+---------+--------------+--------+----------------------+------------------+---------------------------+
+
+
++--------------------------------------------------------------------------------------------------+
+; Global & Other Fast Signals                                                                      ;
++-------+----------+---------+----------------------+------------------+---------------------------+
+; Name  ; Location ; Fan-Out ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
++-------+----------+---------+----------------------+------------------+---------------------------+
+; g_clk ; PIN_K17  ; 8       ; Global Clock         ; GCLK10           ; --                        ;
++-------+----------+---------+----------------------+------------------+---------------------------+
 
 
 +------------------------------------------------------------------------------------------+
@@ -1163,6 +1219,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; num1[2]~input                                                                  ; 9       ;
 ; sel1~input                                                                     ; 9       ;
 ; divider4bit:myDiv|twoComp:input1|h2InMux4bit:mux|y[2]~0                        ; 9       ;
+; globalRes~input                                                                ; 8       ;
 ; divider4bit:myDiv|fullSubtractor:FS1|Bout~0                                    ; 7       ;
 ; num0[2]~input                                                                  ; 6       ;
 ; multiplier4bit:myMulti|halfAdder:HA3|carryout                                  ; 6       ;
@@ -1226,6 +1283,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; divider4bit:myDiv|fullSubtractor:FS7|Bout~2                                    ; 1       ;
 ; divider4bit:myDiv|fullSubtractor:FS7|Bout~1                                    ; 1       ;
 ; divider4bit:myDiv|fullSubtractor:FS7|Bout~0                                    ; 1       ;
+; eightBitLeftShift:Display|enARdFF_2:bit7|int_q                                 ; 1       ;
+; eightBitLeftShift:Display|enARdFF_2:bit6|int_q                                 ; 1       ;
+; eightBitLeftShift:Display|enARdFF_2:bit5|int_q                                 ; 1       ;
+; eightBitLeftShift:Display|enARdFF_2:bit4|int_q                                 ; 1       ;
+; eightBitLeftShift:Display|enARdFF_2:bit3|int_q                                 ; 1       ;
+; eightBitLeftShift:Display|enARdFF_2:bit2|int_q                                 ; 1       ;
+; eightBitLeftShift:Display|enARdFF_2:bit1|int_q                                 ; 1       ;
+; eightBitLeftShift:Display|enARdFF_2:bit0|int_q                                 ; 1       ;
 ; fourMux:outputMux|h2InMux:twoIN2|y[1]~19                                       ; 1       ;
 ; fourMux:outputMux|h2InMux:twoIN2|y[2]~15                                       ; 1       ;
 +--------------------------------------------------------------------------------+---------+
@@ -1236,23 +1301,23 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +------------------------------+-------------------------+
 ; Routing Resource Type        ; Usage                   ;
 +------------------------------+-------------------------+
-; Block interconnects          ; 101 / 374,484 ( < 1 % ) ;
-; C12 interconnects            ; 0 / 16,664 ( 0 % )      ;
-; C2 interconnects             ; 11 / 155,012 ( < 1 % )  ;
-; C4 interconnects             ; 15 / 72,600 ( < 1 % )   ;
+; Block interconnects          ; 102 / 374,484 ( < 1 % ) ;
+; C12 interconnects            ; 24 / 16,664 ( < 1 % )   ;
+; C2 interconnects             ; 7 / 155,012 ( < 1 % )   ;
+; C4 interconnects             ; 24 / 72,600 ( < 1 % )   ;
 ; DQS bus muxes                ; 0 / 30 ( 0 % )          ;
 ; DQS-18 I/O buses             ; 0 / 30 ( 0 % )          ;
 ; DQS-9 I/O buses              ; 0 / 30 ( 0 % )          ;
-; Direct links                 ; 18 / 374,484 ( < 1 % )  ;
-; Global clocks                ; 0 / 16 ( 0 % )          ;
+; Direct links                 ; 23 / 374,484 ( < 1 % )  ;
+; Global clocks                ; 1 / 16 ( 6 % )          ;
 ; Horizontal periphery clocks  ; 0 / 72 ( 0 % )          ;
-; Local interconnects          ; 28 / 112,960 ( < 1 % )  ;
+; Local interconnects          ; 29 / 112,960 ( < 1 % )  ;
 ; Quadrant clocks              ; 0 / 88 ( 0 % )          ;
-; R14 interconnects            ; 4 / 15,868 ( < 1 % )    ;
-; R14/C12 interconnect drivers ; 1 / 27,256 ( < 1 % )    ;
-; R3 interconnects             ; 22 / 169,296 ( < 1 % )  ;
-; R6 interconnects             ; 41 / 330,800 ( < 1 % )  ;
-; Spine clocks                 ; 0 / 480 ( 0 % )         ;
+; R14 interconnects            ; 5 / 15,868 ( < 1 % )    ;
+; R14/C12 interconnect drivers ; 22 / 27,256 ( < 1 % )   ;
+; R3 interconnects             ; 31 / 169,296 ( < 1 % )  ;
+; R6 interconnects             ; 60 / 330,800 ( < 1 % )  ;
+; Spine clocks                 ; 1 / 480 ( < 1 % )       ;
 ; Wire stub REs                ; 0 / 20,834 ( 0 % )      ;
 +------------------------------+-------------------------+
 
@@ -1312,9 +1377,9 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+--------------+--------------+--------------+--------------+--------------+-----------+--------------+--------------+-----------+-----------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
 ; Pin/Rules          ; IO_000001    ; IO_000002    ; IO_000003    ; IO_000004    ; IO_000005    ; IO_000006 ; IO_000007    ; IO_000008    ; IO_000009 ; IO_000010 ; IO_000011    ; IO_000012    ; IO_000013    ; IO_000014    ; IO_000015    ; IO_000018    ; IO_000019    ; IO_000020    ; IO_000021    ; IO_000022    ; IO_000023    ; IO_000024    ; IO_000026    ; IO_000027    ; IO_000045    ; IO_000046    ; IO_000047    ; IO_000034    ;
 +--------------------+--------------+--------------+--------------+--------------+--------------+-----------+--------------+--------------+-----------+-----------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
-; Total Pass         ; 0            ; 0            ; 0            ; 0            ; 0            ; 18        ; 0            ; 0            ; 18        ; 18        ; 0            ; 8            ; 0            ; 0            ; 0            ; 0            ; 8            ; 0            ; 0            ; 0            ; 0            ; 8            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ;
+; Total Pass         ; 0            ; 0            ; 0            ; 0            ; 0            ; 20        ; 0            ; 0            ; 20        ; 20        ; 0            ; 8            ; 0            ; 0            ; 0            ; 0            ; 8            ; 0            ; 0            ; 0            ; 0            ; 8            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ;
 ; Total Unchecked    ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 0            ; 0            ; 0         ; 0         ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ;
-; Total Inapplicable ; 18           ; 18           ; 18           ; 18           ; 18           ; 0         ; 18           ; 18           ; 0         ; 0         ; 18           ; 10           ; 18           ; 18           ; 18           ; 18           ; 10           ; 18           ; 18           ; 18           ; 18           ; 10           ; 18           ; 18           ; 18           ; 18           ; 18           ; 18           ;
+; Total Inapplicable ; 20           ; 20           ; 20           ; 20           ; 20           ; 0         ; 20           ; 20           ; 0         ; 0         ; 20           ; 12           ; 20           ; 20           ; 20           ; 20           ; 12           ; 20           ; 20           ; 20           ; 20           ; 12           ; 20           ; 20           ; 20           ; 20           ; 20           ; 20           ;
 ; Total Fail         ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 0            ; 0            ; 0         ; 0         ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ;
 ; result[0]          ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; result[1]          ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
@@ -1334,6 +1399,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; num0[3]            ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; num0[1]            ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; num0[2]            ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
+; g_clk              ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
+; globalRes          ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 +--------------------+--------------+--------------+--------------+--------------+--------------+-----------+--------------+--------------+-----------+-----------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
 
 
@@ -1386,7 +1453,7 @@ Info (21077): High junction temperature is 100 degrees C
 Info (171003): Fitter is performing an Auto Fit compilation, which may decrease Fitter effort to reduce compilation time
 Warning (292013): Feature LogicLock is only available with a valid subscription license. You can purchase a software subscription to gain full access to this feature.
 Warning (15714): Some pins have incomplete I/O assignments. Refer to the I/O Assignment Warnings report for details
-Critical Warning (169085): No exact pin location assignment(s) for 18 pins of 18 total pins
+Critical Warning (169085): No exact pin location assignment(s) for 20 pins of 20 total pins
     Info (169086): Pin result[0] not assigned to an exact location on the device
     Info (169086): Pin result[1] not assigned to an exact location on the device
     Info (169086): Pin result[2] not assigned to an exact location on the device
@@ -1405,19 +1472,21 @@ Critical Warning (169085): No exact pin location assignment(s) for 18 pins of 18
     Info (169086): Pin num0[3] not assigned to an exact location on the device
     Info (169086): Pin num0[1] not assigned to an exact location on the device
     Info (169086): Pin num0[2] not assigned to an exact location on the device
+    Info (169086): Pin g_clk not assigned to an exact location on the device
+    Info (169086): Pin globalRes not assigned to an exact location on the device
 Info (184020): Starting Fitter periphery placement operations
+Info (11191): Automatically promoted 1 clock (1 global)
+    Info (11162): g_clk~inputCLKENA0 with 8 fanout uses global clock CLKCTRL_G10
 Info (184021): Fitter periphery placement operations ending: elapsed time is 00:00:00
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'Lab2.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
 Info (332144): No user constrained base clocks found in the design
-Info (332096): The command derive_clocks did not find any clocks to derive.  No clocks were created or changed.
-Warning (332068): No clocks defined in design.
 Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
 Info (332154): The derive_clock_uncertainty command did not apply clock uncertainty to any clock-to-clock transfers.
 Info (332130): Timing requirements not specified -- quality metrics such as performance may be sacrificed to reduce compilation time.
 Info (176233): Starting register packing
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
-Info (11798): Fitter preparation operations ending: elapsed time is 00:00:08
+Info (11798): Fitter preparation operations ending: elapsed time is 00:00:09
 Info (170189): Fitter placement preparation operations beginning
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:00
 Info (170191): Fitter placement operations beginning
@@ -1425,23 +1494,23 @@ Info (170137): Fitter placement was successful
 Info (170192): Fitter placement operations ending: elapsed time is 00:00:01
 Info (170193): Fitter routing operations beginning
 Info (170195): Router estimated average interconnect usage is 0% of the available device resources
-    Info (170196): Router estimated peak interconnect usage is 0% of the available device resources in the region that extends from location X78_Y35 to location X89_Y45
+    Info (170196): Router estimated peak interconnect usage is 0% of the available device resources in the region that extends from location X56_Y23 to location X66_Y34
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:02
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
     Info (170200): Optimizations that may affect the design's timing were skipped
-Info (11888): Total time spent on timing analysis during the Fitter is 0.23 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.22 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:05
+Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:04
 Info (144001): Generated suppressed messages file C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/output_files/Lab2.fit.smsg
-Info: Quartus II 64-Bit Fitter was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 6639 megabytes
-    Info: Processing ended: Thu Oct 27 11:37:02 2022
-    Info: Elapsed time: 00:00:28
-    Info: Total CPU time (on all processors): 00:00:55
+Info: Quartus II 64-Bit Fitter was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 6640 megabytes
+    Info: Processing ended: Fri Oct 28 07:36:02 2022
+    Info: Elapsed time: 00:00:31
+    Info: Total CPU time (on all processors): 00:01:00
 
 
 +----------------------------+

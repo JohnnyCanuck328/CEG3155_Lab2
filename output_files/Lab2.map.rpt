@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Lab2
-Thu Oct 27 11:36:33 2022
+Fri Oct 28 07:35:30 2022
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -15,20 +15,21 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
   9. Multiplexer Restructuring Statistics (Restructuring Performed)
- 10. Port Connectivity Checks: "fourMux:outputMux"
- 11. Port Connectivity Checks: "fourbitaddsub:addSub"
- 12. Port Connectivity Checks: "multiplier4bit:myMulti|eightBitAdder:eightAdder"
- 13. Port Connectivity Checks: "multiplier4bit:myMulti|twoComp:input2"
- 14. Port Connectivity Checks: "multiplier4bit:myMulti|twoComp:input1"
- 15. Port Connectivity Checks: "divider4bit:myDiv|h2InMux4bit:resultMux"
- 16. Port Connectivity Checks: "divider4bit:myDiv|fourbitaddsub:fourBitAdder"
- 17. Port Connectivity Checks: "divider4bit:myDiv|fullSubtractor:FS5"
- 18. Port Connectivity Checks: "divider4bit:myDiv|fullSubtractor:FS2"
- 19. Port Connectivity Checks: "divider4bit:myDiv|fullSubtractor:FS0"
- 20. Port Connectivity Checks: "divider4bit:myDiv|twoComp:input1|fourbitaddsub:fourBitAdder"
- 21. Port Connectivity Checks: "divider4bit:myDiv"
- 22. Elapsed Time Per Partition
- 23. Analysis & Synthesis Messages
+ 10. Port Connectivity Checks: "eightBitLeftShift:Display"
+ 11. Port Connectivity Checks: "fourMux:outputMux"
+ 12. Port Connectivity Checks: "fourbitaddsub:addSub"
+ 13. Port Connectivity Checks: "multiplier4bit:myMulti|eightBitAdder:eightAdder"
+ 14. Port Connectivity Checks: "multiplier4bit:myMulti|twoComp:input2"
+ 15. Port Connectivity Checks: "multiplier4bit:myMulti|twoComp:input1"
+ 16. Port Connectivity Checks: "divider4bit:myDiv|h2InMux4bit:resultMux"
+ 17. Port Connectivity Checks: "divider4bit:myDiv|fourbitaddsub:fourBitAdder"
+ 18. Port Connectivity Checks: "divider4bit:myDiv|fullSubtractor:FS5"
+ 19. Port Connectivity Checks: "divider4bit:myDiv|fullSubtractor:FS2"
+ 20. Port Connectivity Checks: "divider4bit:myDiv|fullSubtractor:FS0"
+ 21. Port Connectivity Checks: "divider4bit:myDiv|twoComp:input1|fourbitaddsub:fourBitAdder"
+ 22. Port Connectivity Checks: "divider4bit:myDiv"
+ 23. Elapsed Time Per Partition
+ 24. Analysis & Synthesis Messages
 
 
 
@@ -54,14 +55,14 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +---------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu Oct 27 11:36:33 2022      ;
+; Analysis & Synthesis Status     ; Successful - Fri Oct 28 07:35:30 2022      ;
 ; Quartus II 64-Bit Version       ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                   ; Lab2                                       ;
 ; Top-level Entity Name           ; datapath                                   ;
 ; Family                          ; Cyclone V                                  ;
 ; Logic utilization (in ALMs)     ; N/A                                        ;
-; Total registers                 ; 0                                          ;
-; Total pins                      ; 18                                         ;
+; Total registers                 ; 8                                          ;
+; Total pins                      ; 20                                         ;
 ; Total virtual pins              ; 0                                          ;
 ; Total block memory bits         ; 0                                          ;
 ; Total DSP Blocks                ; 0                                          ;
@@ -178,24 +179,26 @@ applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                          ;
-+----------------------------------+-----------------+-----------------+------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                   ; Library ;
-+----------------------------------+-----------------+-----------------+------------------------------------------------------------------------------------------------+---------+
-; divider4bit.vhd                  ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/divider4bit.vhd    ;         ;
-; fullSubtractor.vhd               ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/fullSubtractor.vhd ;         ;
-; multiplier4bit.vhd               ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/multiplier4bit.vhd ;         ;
-; fourbitaddsub.vhd                ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/fourbitaddsub.vhd  ;         ;
-; h2InMux.vhd                      ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/h2InMux.vhd        ;         ;
-; fourMux.vhd                      ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/fourMux.vhd        ;         ;
-; onebitadder.vhd                  ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/onebitadder.vhd    ;         ;
-; halfAdder.vhd                    ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/halfAdder.vhd      ;         ;
-; h2InMux4bit.vhd                  ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/h2InMux4bit.vhd    ;         ;
-; twoComp.vhd                      ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/twoComp.vhd        ;         ;
-; eightBitAdder.vhd                ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/eightBitAdder.vhd  ;         ;
-; datapath.vhd                     ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/datapath.vhd       ;         ;
-+----------------------------------+-----------------+-----------------+------------------------------------------------------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                             ;
++----------------------------------+-----------------+-----------------+---------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                      ; Library ;
++----------------------------------+-----------------+-----------------+---------------------------------------------------------------------------------------------------+---------+
+; enardFF_2.vhd                    ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/enardFF_2.vhd         ;         ;
+; eightBitLeftShift.vhd            ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/eightBitLeftShift.vhd ;         ;
+; divider4bit.vhd                  ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/divider4bit.vhd       ;         ;
+; fullSubtractor.vhd               ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/fullSubtractor.vhd    ;         ;
+; multiplier4bit.vhd               ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/multiplier4bit.vhd    ;         ;
+; fourbitaddsub.vhd                ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/fourbitaddsub.vhd     ;         ;
+; h2InMux.vhd                      ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/h2InMux.vhd           ;         ;
+; fourMux.vhd                      ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/fourMux.vhd           ;         ;
+; onebitadder.vhd                  ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/onebitadder.vhd       ;         ;
+; halfAdder.vhd                    ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/halfAdder.vhd         ;         ;
+; h2InMux4bit.vhd                  ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/h2InMux4bit.vhd       ;         ;
+; twoComp.vhd                      ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/twoComp.vhd           ;         ;
+; eightBitAdder.vhd                ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/eightBitAdder.vhd     ;         ;
+; datapath.vhd                     ; yes             ; User VHDL File  ; C:/Users/grobb/Documents/University/Digital_Systems/Labs/Lab_2/CEG3155_Lab2/datapath.vhd          ;         ;
++----------------------------------+-----------------+-----------------+---------------------------------------------------------------------------------------------------+---------+
 
 
 +-------------------------------------------------------------+
@@ -212,14 +215,14 @@ applicable agreement for further details.
 ;     -- 4 input functions                    ; 16            ;
 ;     -- <=3 input functions                  ; 14            ;
 ;                                             ;               ;
-; Dedicated logic registers                   ; 0             ;
+; Dedicated logic registers                   ; 8             ;
 ;                                             ;               ;
-; I/O pins                                    ; 18            ;
+; I/O pins                                    ; 20            ;
 ; Total DSP Blocks                            ; 0             ;
 ; Maximum fan-out node                        ; num1[0]~input ;
 ; Maximum fan-out                             ; 27            ;
-; Total fan-out                               ; 343           ;
-; Average fan-out                             ; 3.27          ;
+; Total fan-out                               ; 369           ;
+; Average fan-out                             ; 3.15          ;
 +---------------------------------------------+---------------+
 
 
@@ -228,7 +231,7 @@ applicable agreement for further details.
 +----------------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node       ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                        ; Library Name ;
 +----------------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------+--------------+
-; |datapath                        ; 69 (0)            ; 0 (0)        ; 0                 ; 0          ; 18   ; 0            ; |datapath                                                                  ; work         ;
+; |datapath                        ; 69 (0)            ; 8 (0)        ; 0                 ; 0          ; 20   ; 0            ; |datapath                                                                  ; work         ;
 ;    |divider4bit:myDiv|           ; 25 (6)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|divider4bit:myDiv                                                ; work         ;
 ;       |fullSubtractor:FS0|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|divider4bit:myDiv|fullSubtractor:FS0                             ; work         ;
 ;       |fullSubtractor:FS1|       ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|divider4bit:myDiv|fullSubtractor:FS1                             ; work         ;
@@ -240,6 +243,15 @@ applicable agreement for further details.
 ;          |h2InMux4bit:mux|       ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|divider4bit:myDiv|twoComp:input1|h2InMux4bit:mux                 ; work         ;
 ;       |twoComp:input2|           ; 3 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|divider4bit:myDiv|twoComp:input2                                 ; work         ;
 ;          |h2InMux4bit:mux|       ; 3 (3)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|divider4bit:myDiv|twoComp:input2|h2InMux4bit:mux                 ; work         ;
+;    |eightBitLeftShift:Display|   ; 0 (0)             ; 8 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display                                        ; work         ;
+;       |enARdFF_2:bit0|           ; 0 (0)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit0                         ; work         ;
+;       |enARdFF_2:bit1|           ; 0 (0)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit1                         ; work         ;
+;       |enARdFF_2:bit2|           ; 0 (0)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit2                         ; work         ;
+;       |enARdFF_2:bit3|           ; 0 (0)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit3                         ; work         ;
+;       |enARdFF_2:bit4|           ; 0 (0)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit4                         ; work         ;
+;       |enARdFF_2:bit5|           ; 0 (0)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit5                         ; work         ;
+;       |enARdFF_2:bit6|           ; 0 (0)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit6                         ; work         ;
+;       |enARdFF_2:bit7|           ; 0 (0)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit7                         ; work         ;
 ;    |fourMux:outputMux|           ; 18 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|fourMux:outputMux                                                ; work         ;
 ;       |h2InMux:twoIN2|           ; 18 (18)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|fourMux:outputMux|h2InMux:twoIN2                                 ; work         ;
 ;    |fourbitaddsub:addSub|        ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|fourbitaddsub:addSub                                             ; work         ;
@@ -270,23 +282,35 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
+; Total registers                              ; 8     ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Clear ; 8     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 0     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                      ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------+
-; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |datapath|fourMux:outputMux|h2InMux:twoIN2|y[1] ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit1|int_q ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "eightBitLeftShift:Display"                                                                ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                             ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; controller ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; shiftin    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; enable     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; notoutput  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------+
@@ -423,7 +447,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Thu Oct 27 11:36:30 2022
+    Info: Processing started: Fri Oct 28 07:35:27 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Lab2 -c Lab2
 Warning (136002): Ignored duplicate of assignment HIERARCHY_BLACKBOX_FILE for node "|"
 Warning (136002): Ignored duplicate of assignment PARTITION_PRESERVE_HIGH_SPEED_TILES for node ""
@@ -522,6 +546,12 @@ Warning (136002): Ignored duplicate of assignment PARTITION_SOURCE for node ""
 Warning (136002): Ignored duplicate of assignment PARTITION_BACK_ANNOTATION for node ""
 Warning (136002): Ignored duplicate of assignment PARTITION_COLOR for node ""
 Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file enardff_2.vhd
+    Info (12022): Found design unit 1: enARdFF_2-rtl
+    Info (12023): Found entity 1: enARdFF_2
+Info (12021): Found 2 design units, including 1 entities, in source file eightbitleftshift.vhd
+    Info (12022): Found design unit 1: eightBitLeftShift-bdf_type
+    Info (12023): Found entity 1: eightBitLeftShift
 Info (12021): Found 2 design units, including 1 entities, in source file divider4bit.vhd
     Info (12022): Found design unit 1: divider4bit-structDiv
     Info (12023): Found entity 1: divider4bit
@@ -534,10 +564,6 @@ Info (12021): Found 2 design units, including 1 entities, in source file multipl
 Info (12021): Found 2 design units, including 1 entities, in source file fourbitaddsub.vhd
     Info (12022): Found design unit 1: fourbitaddsub-rtl
     Info (12023): Found entity 1: fourbitaddsub
-Warning (12019): Can't analyze file -- file eightBitLeftShift.vhd is missing
-Info (12021): Found 2 design units, including 1 entities, in source file dff_2.vhd
-    Info (12022): Found design unit 1: dFF_2-rtl
-    Info (12023): Found entity 1: dFF_2
 Info (12021): Found 2 design units, including 1 entities, in source file h2inmux.vhd
     Info (12022): Found design unit 1: h2InMux-struct2mux
     Info (12023): Found entity 1: h2InMux
@@ -570,7 +596,7 @@ Info (12021): Found 2 design units, including 1 entities, in source file datapat
     Info (12022): Found design unit 1: datapath-structData
     Info (12023): Found entity 1: datapath
 Info (12127): Elaborating entity "datapath" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at datapath.vhd(40): object "addSubCarry" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at datapath.vhd(53): object "addSubCarry" assigned a value but never read
 Info (12128): Elaborating entity "divider4bit" for hierarchy "divider4bit:myDiv"
 Warning (10036): Verilog HDL or VHDL warning at divider4bit.vhd(38): object "NOTdivisor" assigned a value but never read
 Warning (10541): VHDL Signal Declaration warning at divider4bit.vhd(38): used implicit default value for signal "NOTB" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
@@ -588,6 +614,8 @@ Info (12128): Elaborating entity "halfAdder" for hierarchy "multiplier4bit:myMul
 Info (12128): Elaborating entity "eightBitAdder" for hierarchy "multiplier4bit:myMulti|eightBitAdder:eightAdder"
 Info (12128): Elaborating entity "h2InMux" for hierarchy "multiplier4bit:myMulti|h2InMux:mux"
 Info (12128): Elaborating entity "fourMux" for hierarchy "fourMux:outputMux"
+Info (12128): Elaborating entity "eightBitLeftShift" for hierarchy "eightBitLeftShift:Display"
+Info (12128): Elaborating entity "enARdFF_2" for hierarchy "eightBitLeftShift:Display|enARdFF_2:bit0"
 Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (286030): Timing-Driven Synthesis is running
 Warning (20013): Ignored assignments for entity "eightBitAddSub" -- entity does not exist in design
@@ -617,13 +645,13 @@ Warning (20013): Ignored assignments for entity "eightBitAddSub" -- entity does 
     Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ENABLE_STRICT_PRESERVATION OFF -entity eightBitAddSub -section_id Top was ignored
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 87 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 10 input pins
+Info (21057): Implemented 89 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 12 input pins
     Info (21059): Implemented 8 output pins
     Info (21061): Implemented 69 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 131 warnings
-    Info: Peak virtual memory: 4753 megabytes
-    Info: Processing ended: Thu Oct 27 11:36:33 2022
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 130 warnings
+    Info: Peak virtual memory: 4760 megabytes
+    Info: Processing ended: Fri Oct 28 07:35:30 2022
     Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:03
 

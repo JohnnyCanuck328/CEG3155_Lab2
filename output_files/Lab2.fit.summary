@@ -1,4 +1,4 @@
-Fitter Status : Successful - Thu Oct 27 11:37:01 2022
+Fitter Status : Successful - Fri Oct 28 07:36:02 2022
 Quartus II 64-Bit Version : 13.1.0 Build 162 10/23/2013 SJ Web Edition
 Revision Name : Lab2
 Top-level Entity Name : datapath
@@ -6,8 +6,8 @@ Family : Cyclone V
 Device : 5CGXFC7C6U19I7
 Timing Models : Final
 Logic utilization (in ALMs) : 47 / 56,480 ( < 1 % )
-Total registers : 0
-Total pins : 18 / 268 ( 7 % )
+Total registers : 8
+Total pins : 20 / 268 ( 7 % )
 Total virtual pins : 0
 Total block memory bits : 0 / 7,024,640 ( 0 % )
 Total DSP Blocks : 0 / 156 ( 0 % )

@@ -18,7 +18,7 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "10/27/2022 13:04:12"
+// Generated on "10/28/2022 07:39:11"
                                                                         
 // Verilog Self-Checking Test Bench (with test vectors) for design :    datapath
 // 
@@ -27,12 +27,16 @@
 
 `timescale 1 ps/ 1 ps
 module datapath_vlg_sample_tst(
+	g_clk,
+	globalRes,
 	num0,
 	num1,
 	sel0,
 	sel1,
 	sampler_tx
 );
+input  g_clk;
+input  globalRes;
 input [3:0] num0;
 input [3:0] num1;
 input  sel0;
@@ -41,7 +45,7 @@ output sampler_tx;
 
 reg sample;
 time current_time;
-always @(num0 or num1 or sel0 or sel1)
+always @(g_clk or globalRes or num0 or num1 or sel0 or sel1)
                                                                                 
 begin                                                 
  if ($realtime > 0)                                   
@@ -283,6 +287,8 @@ endmodule
 module datapath_vlg_vec_tst();
 // constants                                           
 // general purpose registers
+reg g_clk;
+reg globalRes;
 reg [3:0] num0;
 reg [3:0] num1;
 reg sel0;
@@ -295,6 +301,8 @@ wire sampler;
 // assign statements (if any)                          
 datapath i1 (
 // port map - connection between master ports and signals/registers   
+	.g_clk(g_clk),
+	.globalRes(globalRes),
 	.num0(num0),
 	.num1(num1),
 	.result(result),
@@ -302,11 +310,19 @@ datapath i1 (
 	.sel1(sel1)
 );
 
+// g_clk
+always
+begin
+	g_clk = 1'b0;
+	g_clk = #5000 1'b1;
+	#5000;
+end 
+
 // sel0
 initial
 begin
 	sel0 = 1'b1;
-	sel0 = #310000 1'b0;
+	sel0 = #350000 1'b0;
 end 
 
 // sel1
@@ -314,6 +330,12 @@ initial
 begin
 	sel1 = 1'b1;
 	sel1 = #350000 1'b0;
+end 
+
+// globalRes
+initial
+begin
+	globalRes = 1'b0;
 end 
 // num0[ 3 ]
 initial
@@ -372,6 +394,8 @@ begin
 end 
 
 datapath_vlg_sample_tst tb_sample (
+	.g_clk(g_clk),
+	.globalRes(globalRes),
 	.num0(num0),
 	.num1(num1),
 	.sel0(sel0),

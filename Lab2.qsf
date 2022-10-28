@@ -60,12 +60,12 @@ set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -entity e
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -entity eightbitaddsub -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -entity eightbitaddsub -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -entity eightbitaddsub -section_id Top
+set_global_assignment -name VHDL_FILE enardFF_2.vhd
+set_global_assignment -name VHDL_FILE eightBitLeftShift.vhd
 set_global_assignment -name VHDL_FILE divider4bit.vhd
 set_global_assignment -name VHDL_FILE fullSubtractor.vhd
 set_global_assignment -name VHDL_FILE multiplier4bit.vhd
 set_global_assignment -name VHDL_FILE fourbitaddsub.vhd
-set_global_assignment -name VHDL_FILE eightBitLeftShift.vhd
-set_global_assignment -name VHDL_FILE dFF_2.vhd
 set_global_assignment -name VHDL_FILE h2InMux.vhd
 set_global_assignment -name VHDL_FILE fourMux.vhd
 set_global_assignment -name VHDL_FILE twoAnd.vhd
@@ -87,6 +87,7 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE testingSub.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE testingDiv.vwf
 set_global_assignment -name VHDL_FILE datapath.vhd
 set_global_assignment -name VECTOR_WAVEFORM_FILE testingData.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE testingReg.vwf
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top

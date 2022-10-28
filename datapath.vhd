@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 
 entity datapath is
 	port(num0, num1: in std_logic_vector(3 downto 0);
-			sel0, sel1: in std_logic;
+			sel0, sel1, g_clk, globalRes: in std_logic;
 			result: out std_logic_vector(7 downto 0));
 end datapath;
 
@@ -36,14 +36,28 @@ architecture structData of datapath is
 		uy: out std_logic_vector(7 downto 0));
 	end component;
 	
-	signal dividerOut, multiplierOut, addSubOut: std_logic_vector(7 downto 0);
-	signal addSubCarry, addSubBit3, overflow: std_logic;
+	COMPONENT eightBitLeftShift
+		PORT
+		(
+			controller :  IN  STD_LOGIC;
+			clk :  IN  STD_LOGIC;
+			reset :  IN  STD_LOGIC;
+			shiftIn :  IN  STD_LOGIC;
+			enable :  IN  STD_LOGIC;
+			inp :  IN  STD_LOGIC_VECTOR(7 downto 0);
+			output0, output1, output2, output3, output4, output5, output6, output7 :  OUT  STD_LOGIC;
+			NOToutput:  OUT  STD_LOGIC_VECTOR(7 downto 0));
+	END COMPONENT;
+	
+	signal dividerOut, multiplierOut, addSubOut, mux4Out: std_logic_vector(7 downto 0);
+	signal addSubCarry, addSubBit3, overflow,vcc: std_logic;
 	
 	begin
 	
 		myDiv: divider4bit port map(dividend => num0, divisor => num1, quotient(0) => dividerOut(0),
 		quotient(1) => dividerOut(1), quotient(2) => dividerOut(2), quotient(3) => dividerOut(3), remainder => open);
 		
+		vcc <= '1';
 		dividerOut(4) <= '0';
 		dividerOut(5) <= '0';
 		dividerOut(6) <= '0';
@@ -61,6 +75,9 @@ architecture structData of datapath is
 		addSubOut(7) <= '0' XOR (addSubBit3 AND NOT(overflow));
 		
 		outputMux: fourMux port map(uw0 => multiplierOut, uw1 => dividerOut, uw2 => addSubOut, uw3 => addSubOut,
-								s0 => sel0, s1 => sel1, uy => result);
-
+								s0 => sel0, s1 => sel1, uy => mux4Out);
+								
+		Display: eightBitLeftShift PORT MAP(controller => vcc, clk => g_clk, reset => NOT(globalRes), shiftIn => vcc, enable => vcc, inp => mux4Out,
+													output0 => result(0), output1 => result(1), output2 => result(2), output3 => result(3), output4 => result(4),
+													output5 => result(5), output6 => result(6), output7 => result(7), NOToutput => open);
 end structData;
