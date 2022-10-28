@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Lab2
-Fri Oct 28 07:35:30 2022
+Fri Oct 28 16:45:15 2022
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -16,20 +16,18 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
   8. General Register Statistics
   9. Multiplexer Restructuring Statistics (Restructuring Performed)
  10. Port Connectivity Checks: "eightBitLeftShift:Display"
- 11. Port Connectivity Checks: "fourMux:outputMux"
- 12. Port Connectivity Checks: "fourbitaddsub:addSub"
- 13. Port Connectivity Checks: "multiplier4bit:myMulti|eightBitAdder:eightAdder"
- 14. Port Connectivity Checks: "multiplier4bit:myMulti|twoComp:input2"
- 15. Port Connectivity Checks: "multiplier4bit:myMulti|twoComp:input1"
- 16. Port Connectivity Checks: "divider4bit:myDiv|h2InMux4bit:resultMux"
- 17. Port Connectivity Checks: "divider4bit:myDiv|fourbitaddsub:fourBitAdder"
- 18. Port Connectivity Checks: "divider4bit:myDiv|fullSubtractor:FS5"
- 19. Port Connectivity Checks: "divider4bit:myDiv|fullSubtractor:FS2"
- 20. Port Connectivity Checks: "divider4bit:myDiv|fullSubtractor:FS0"
- 21. Port Connectivity Checks: "divider4bit:myDiv|twoComp:input1|fourbitaddsub:fourBitAdder"
- 22. Port Connectivity Checks: "divider4bit:myDiv"
- 23. Elapsed Time Per Partition
- 24. Analysis & Synthesis Messages
+ 11. Port Connectivity Checks: "multiplier4bit:myMulti|eightBitAdder:eightAdder"
+ 12. Port Connectivity Checks: "multiplier4bit:myMulti|twoComp:input2"
+ 13. Port Connectivity Checks: "multiplier4bit:myMulti|twoComp:input1"
+ 14. Port Connectivity Checks: "divider4bit:myDiv|h2InMux4bit:resultMux"
+ 15. Port Connectivity Checks: "divider4bit:myDiv|fourbitaddsub:fourBitAdder"
+ 16. Port Connectivity Checks: "divider4bit:myDiv|fullSubtractor:FS5"
+ 17. Port Connectivity Checks: "divider4bit:myDiv|fullSubtractor:FS2"
+ 18. Port Connectivity Checks: "divider4bit:myDiv|fullSubtractor:FS0"
+ 19. Port Connectivity Checks: "divider4bit:myDiv|twoComp:input1|fourbitaddsub:fourBitAdder"
+ 20. Port Connectivity Checks: "divider4bit:myDiv"
+ 21. Elapsed Time Per Partition
+ 22. Analysis & Synthesis Messages
 
 
 
@@ -55,14 +53,14 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +---------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Fri Oct 28 07:35:30 2022      ;
+; Analysis & Synthesis Status     ; Successful - Fri Oct 28 16:45:15 2022      ;
 ; Quartus II 64-Bit Version       ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                   ; Lab2                                       ;
 ; Top-level Entity Name           ; datapath                                   ;
 ; Family                          ; Cyclone V                                  ;
 ; Logic utilization (in ALMs)     ; N/A                                        ;
 ; Total registers                 ; 8                                          ;
-; Total pins                      ; 20                                         ;
+; Total pins                      ; 23                                         ;
 ; Total virtual pins              ; 0                                          ;
 ; Total block memory bits         ; 0                                          ;
 ; Total DSP Blocks                ; 0                                          ;
@@ -201,29 +199,29 @@ applicable agreement for further details.
 +----------------------------------+-----------------+-----------------+---------------------------------------------------------------------------------------------------+---------+
 
 
-+-------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                 ;
-+---------------------------------------------+---------------+
-; Resource                                    ; Usage         ;
-+---------------------------------------------+---------------+
-; Estimate of Logic utilization (ALMs needed) ; 46            ;
-;                                             ;               ;
-; Combinational ALUT usage for logic          ; 69            ;
-;     -- 7 input functions                    ; 2             ;
-;     -- 6 input functions                    ; 21            ;
-;     -- 5 input functions                    ; 16            ;
-;     -- 4 input functions                    ; 16            ;
-;     -- <=3 input functions                  ; 14            ;
-;                                             ;               ;
-; Dedicated logic registers                   ; 8             ;
-;                                             ;               ;
-; I/O pins                                    ; 20            ;
-; Total DSP Blocks                            ; 0             ;
-; Maximum fan-out node                        ; num1[0]~input ;
-; Maximum fan-out                             ; 27            ;
-; Total fan-out                               ; 369           ;
-; Average fan-out                             ; 3.15          ;
-+---------------------------------------------+---------------+
++-----------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                     ;
++---------------------------------------------+-------------------+
+; Resource                                    ; Usage             ;
++---------------------------------------------+-------------------+
+; Estimate of Logic utilization (ALMs needed) ; 51                ;
+;                                             ;                   ;
+; Combinational ALUT usage for logic          ; 77                ;
+;     -- 7 input functions                    ; 1                 ;
+;     -- 6 input functions                    ; 24                ;
+;     -- 5 input functions                    ; 15                ;
+;     -- 4 input functions                    ; 17                ;
+;     -- <=3 input functions                  ; 20                ;
+;                                             ;                   ;
+; Dedicated logic registers                   ; 8                 ;
+;                                             ;                   ;
+; I/O pins                                    ; 23                ;
+; Total DSP Blocks                            ; 0                 ;
+; Maximum fan-out node                        ; operandB[0]~input ;
+; Maximum fan-out                             ; 25                ;
+; Total fan-out                               ; 399               ;
+; Average fan-out                             ; 3.05              ;
++---------------------------------------------+-------------------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -231,48 +229,53 @@ applicable agreement for further details.
 +----------------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node       ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                        ; Library Name ;
 +----------------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------+--------------+
-; |datapath                        ; 69 (0)            ; 8 (0)        ; 0                 ; 0          ; 20   ; 0            ; |datapath                                                                  ; work         ;
-;    |divider4bit:myDiv|           ; 25 (6)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|divider4bit:myDiv                                                ; work         ;
+; |datapath                        ; 77 (4)            ; 8 (0)        ; 0                 ; 0          ; 23   ; 0            ; |datapath                                                                  ; work         ;
+;    |divider4bit:myDiv|           ; 27 (6)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|divider4bit:myDiv                                                ; work         ;
 ;       |fullSubtractor:FS0|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|divider4bit:myDiv|fullSubtractor:FS0                             ; work         ;
 ;       |fullSubtractor:FS1|       ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|divider4bit:myDiv|fullSubtractor:FS1                             ; work         ;
 ;       |fullSubtractor:FS2|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|divider4bit:myDiv|fullSubtractor:FS2                             ; work         ;
 ;       |fullSubtractor:FS3|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|divider4bit:myDiv|fullSubtractor:FS3                             ; work         ;
 ;       |fullSubtractor:FS7|       ; 8 (8)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|divider4bit:myDiv|fullSubtractor:FS7                             ; work         ;
 ;       |fullSubtractor:FS8|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|divider4bit:myDiv|fullSubtractor:FS8                             ; work         ;
+;       |h2InMux4bit:resultMux|    ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|divider4bit:myDiv|h2InMux4bit:resultMux                          ; work         ;
 ;       |twoComp:input1|           ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|divider4bit:myDiv|twoComp:input1                                 ; work         ;
 ;          |h2InMux4bit:mux|       ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|divider4bit:myDiv|twoComp:input1|h2InMux4bit:mux                 ; work         ;
 ;       |twoComp:input2|           ; 3 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|divider4bit:myDiv|twoComp:input2                                 ; work         ;
 ;          |h2InMux4bit:mux|       ; 3 (3)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|divider4bit:myDiv|twoComp:input2|h2InMux4bit:mux                 ; work         ;
-;    |eightBitLeftShift:Display|   ; 0 (0)             ; 8 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display                                        ; work         ;
+;    |eightBitLeftShift:Display|   ; 2 (0)             ; 8 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display                                        ; work         ;
 ;       |enARdFF_2:bit0|           ; 0 (0)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit0                         ; work         ;
 ;       |enARdFF_2:bit1|           ; 0 (0)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit1                         ; work         ;
-;       |enARdFF_2:bit2|           ; 0 (0)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit2                         ; work         ;
+;       |enARdFF_2:bit2|           ; 2 (2)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit2                         ; work         ;
 ;       |enARdFF_2:bit3|           ; 0 (0)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit3                         ; work         ;
 ;       |enARdFF_2:bit4|           ; 0 (0)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit4                         ; work         ;
 ;       |enARdFF_2:bit5|           ; 0 (0)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit5                         ; work         ;
 ;       |enARdFF_2:bit6|           ; 0 (0)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit6                         ; work         ;
 ;       |enARdFF_2:bit7|           ; 0 (0)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit7                         ; work         ;
-;    |fourMux:outputMux|           ; 18 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|fourMux:outputMux                                                ; work         ;
-;       |h2InMux:twoIN2|           ; 18 (18)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|fourMux:outputMux|h2InMux:twoIN2                                 ; work         ;
-;    |fourbitaddsub:addSub|        ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|fourbitaddsub:addSub                                             ; work         ;
+;    |fourMux:outputMux|           ; 9 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|fourMux:outputMux                                                ; work         ;
+;       |h2InMux:twoIN0|           ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|fourMux:outputMux|h2InMux:twoIN0                                 ; work         ;
+;       |h2InMux:twoIN2|           ; 8 (8)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|fourMux:outputMux|h2InMux:twoIN2                                 ; work         ;
+;    |fourbitaddsub:addSub|        ; 6 (3)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|fourbitaddsub:addSub                                             ; work         ;
 ;       |oneBitAdder:bit1|         ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|fourbitaddsub:addSub|oneBitAdder:bit1                            ; work         ;
 ;       |oneBitAdder:bit2|         ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|fourbitaddsub:addSub|oneBitAdder:bit2                            ; work         ;
-;    |multiplier4bit:myMulti|      ; 24 (8)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti                                           ; work         ;
-;       |eightBitAdder:eightAdder| ; 5 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder                  ; work         ;
+;       |oneBitAdder:bit3|         ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|fourbitaddsub:addSub|oneBitAdder:bit3                            ; work         ;
+;    |multiplier4bit:myMulti|      ; 29 (8)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti                                           ; work         ;
+;       |eightBitAdder:eightAdder| ; 6 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder                  ; work         ;
 ;          |oneBitAdder:bit1|      ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit1 ; work         ;
 ;          |oneBitAdder:bit2|      ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit2 ; work         ;
 ;          |oneBitAdder:bit3|      ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit3 ; work         ;
 ;          |oneBitAdder:bit4|      ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit4 ; work         ;
 ;          |oneBitAdder:bit5|      ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit5 ; work         ;
+;          |oneBitAdder:bit6|      ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|eightBitAdder:eightAdder|oneBitAdder:bit6 ; work         ;
+;       |halfAdder:HA1|            ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|halfAdder:HA1                             ; work         ;
 ;       |halfAdder:HA2|            ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|halfAdder:HA2                             ; work         ;
 ;       |halfAdder:HA3|            ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|halfAdder:HA3                             ; work         ;
 ;       |halfAdder:HA4|            ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|halfAdder:HA4                             ; work         ;
 ;       |oneBitAdder:FA2|          ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|oneBitAdder:FA2                           ; work         ;
 ;       |oneBitAdder:FA4|          ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|oneBitAdder:FA4                           ; work         ;
-;       |oneBitAdder:FA5|          ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|oneBitAdder:FA5                           ; work         ;
-;       |oneBitAdder:FA6|          ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|oneBitAdder:FA6                           ; work         ;
+;       |oneBitAdder:FA5|          ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|oneBitAdder:FA5                           ; work         ;
+;       |oneBitAdder:FA6|          ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|oneBitAdder:FA6                           ; work         ;
 ;       |oneBitAdder:FA7|          ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|oneBitAdder:FA7                           ; work         ;
-;       |oneBitAdder:FA8|          ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|oneBitAdder:FA8                           ; work         ;
+;       |oneBitAdder:FA8|          ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |datapath|multiplier4bit:myMulti|oneBitAdder:FA8                           ; work         ;
 +----------------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -297,7 +300,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                               ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
-; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit1|int_q ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |datapath|eightBitLeftShift:Display|enARdFF_2:bit2|int_q ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
 
 
@@ -311,24 +314,6 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; enable     ; Input  ; Info     ; Stuck at VCC                                                                        ;
 ; notoutput  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +------------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+-----------------------------------------------+
-; Port Connectivity Checks: "fourMux:outputMux" ;
-+-----------+-------+----------+----------------+
-; Port      ; Type  ; Severity ; Details        ;
-+-----------+-------+----------+----------------+
-; uw1[7..4] ; Input ; Info     ; Stuck at GND   ;
-+-----------+-------+----------+----------------+
-
-
-+--------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "fourbitaddsub:addSub"                                                                   ;
-+----------+--------+----------+-------------------------------------------------------------------------------------+
-; Port     ; Type   ; Severity ; Details                                                                             ;
-+----------+--------+----------+-------------------------------------------------------------------------------------+
-; carryout ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+----------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------+
@@ -447,7 +432,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Fri Oct 28 07:35:27 2022
+    Info: Processing started: Fri Oct 28 16:45:12 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Lab2 -c Lab2
 Warning (136002): Ignored duplicate of assignment HIERARCHY_BLACKBOX_FILE for node "|"
 Warning (136002): Ignored duplicate of assignment PARTITION_PRESERVE_HIGH_SPEED_TILES for node ""
@@ -596,7 +581,6 @@ Info (12021): Found 2 design units, including 1 entities, in source file datapat
     Info (12022): Found design unit 1: datapath-structData
     Info (12023): Found entity 1: datapath
 Info (12127): Elaborating entity "datapath" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at datapath.vhd(53): object "addSubCarry" assigned a value but never read
 Info (12128): Elaborating entity "divider4bit" for hierarchy "divider4bit:myDiv"
 Warning (10036): Verilog HDL or VHDL warning at divider4bit.vhd(38): object "NOTdivisor" assigned a value but never read
 Warning (10541): VHDL Signal Declaration warning at divider4bit.vhd(38): used implicit default value for signal "NOTB" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
@@ -645,13 +629,13 @@ Warning (20013): Ignored assignments for entity "eightBitAddSub" -- entity does 
     Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ENABLE_STRICT_PRESERVATION OFF -entity eightBitAddSub -section_id Top was ignored
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 89 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 100 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 12 input pins
-    Info (21059): Implemented 8 output pins
-    Info (21061): Implemented 69 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 130 warnings
-    Info: Peak virtual memory: 4760 megabytes
-    Info: Processing ended: Fri Oct 28 07:35:30 2022
+    Info (21059): Implemented 11 output pins
+    Info (21061): Implemented 77 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 129 warnings
+    Info: Peak virtual memory: 4748 megabytes
+    Info: Processing ended: Fri Oct 28 16:45:15 2022
     Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:03
 

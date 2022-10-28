@@ -2,9 +2,10 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity datapath is
-	port(num0, num1: in std_logic_vector(3 downto 0);
+	port(operandA, operandB: in std_logic_vector(3 downto 0);
 			sel0, sel1, g_clk, globalRes: in std_logic;
-			result: out std_logic_vector(7 downto 0));
+			MuxOut: out std_logic_vector(7 downto 0);
+			zeroOut, overflowOut, carryOut: out std_logic);
 end datapath;
 
 architecture structData of datapath is
@@ -49,27 +50,27 @@ architecture structData of datapath is
 			NOToutput:  OUT  STD_LOGIC_VECTOR(7 downto 0));
 	END COMPONENT;
 	
-	signal dividerOut, multiplierOut, addSubOut, mux4Out: std_logic_vector(7 downto 0);
+	signal dividerOut, multiplierOut, addSubOut, mux4Out, resultInt: std_logic_vector(7 downto 0);
 	signal addSubCarry, addSubBit3, overflow,vcc: std_logic;
 	
 	begin
 	
-		myDiv: divider4bit port map(dividend => num0, divisor => num1, quotient(0) => dividerOut(0),
+		myDiv: divider4bit port map(dividend => operandA, divisor => operandB, quotient(0) => dividerOut(0),
 		quotient(1) => dividerOut(1), quotient(2) => dividerOut(2), quotient(3) => dividerOut(3), remainder => open);
 		
 		vcc <= '1';
-		dividerOut(4) <= '0';
-		dividerOut(5) <= '0';
-		dividerOut(6) <= '0';
-		dividerOut(7) <= '0';
+		dividerOut(4) <= dividerOut(2);
+		dividerOut(5) <= dividerOut(2);
+		dividerOut(6) <= dividerOut(2);
+		dividerOut(7) <= dividerOut(2);
 		
-		myMulti: multiplier4bit port map( multiplier => num0, multiplicand => num1, P => multiplierOut);
+		myMulti: multiplier4bit port map( multiplier => operandA, multiplicand => operandB, P => multiplierOut);
 		
-		addSub: fourbitaddsub PORT MAP(i_Ai => num0, i_Bi => num1, carryOut => addSubCarry, controller => sel0, 
+		addSub: fourbitaddsub PORT MAP(i_Ai => operandA, i_Bi => operandB, carryOut => addSubCarry, controller => sel0, 
 		o_Sum(0) => addSubOut(0), o_Sum(1) => addSubOut(1), o_Sum(2) => addSubOut(2), o_Sum(3) => addSubBit3, overflow => overflow);
 		
 		addSubOut(3) <= addSubBit3;
-		addSubOut(4) <= '0' XOR (addSubBit3 AND NOT(overflow));--()(addSubBit3);
+		addSubOut(4) <= '0' XOR (addSubBit3 AND NOT(overflow));
 		addSubOut(5) <= '0' XOR (addSubBit3 AND NOT(overflow));
 		addSubOut(6) <= '0' XOR (addSubBit3 AND NOT(overflow));
 		addSubOut(7) <= '0' XOR (addSubBit3 AND NOT(overflow));
@@ -78,6 +79,11 @@ architecture structData of datapath is
 								s0 => sel0, s1 => sel1, uy => mux4Out);
 								
 		Display: eightBitLeftShift PORT MAP(controller => vcc, clk => g_clk, reset => NOT(globalRes), shiftIn => vcc, enable => vcc, inp => mux4Out,
-													output0 => result(0), output1 => result(1), output2 => result(2), output3 => result(3), output4 => result(4),
-													output5 => result(5), output6 => result(6), output7 => result(7), NOToutput => open);
+													output0 => resultInt(0), output1 => resultInt(1), output2 => resultInt(2), output3 => resultInt(3), output4 => resultInt(4),
+													output5 => resultInt(5), output6 => resultInt(6), output7 => resultInt(7), NOToutput => open);
+													
+		zeroOut <= NOT(resultInt(0) OR resultInt(1) OR resultInt(2) OR resultInt(3) OR resultInt(4) OR resultInt(5) OR resultInt(6));
+		carryOut <= sel1 and addSubCarry;
+		overflowOut <= overflow;
+		MuxOut <= resultInt;
 end structData;

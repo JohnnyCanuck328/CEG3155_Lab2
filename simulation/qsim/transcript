@@ -21,5 +21,5 @@
 # Loading work.datapath_vlg_check_tst
 # Loading altera_ver.PRIM_GDFF_LOW
 # Simulation passed !
-# ** Note: $finish    : testingData.vwf.vt(283)
-#    Time: 1 us  Iteration: 0  Instance: /datapath_vlg_vec_tst/tb_out
+# ** Note: $finish    : testingData.vwf.vt(364)
+#    Time: 20 ns  Iteration: 0  Instance: /datapath_vlg_vec_tst/tb_out
